@@ -19,7 +19,7 @@ fr1 = LabelFrame(bg='#409FDE',pady=5)
 #front  #(#1D7334)
 
 #widgets
-lb1_fr1 = Label(fr1, text='Tesouro Direto',foreground='#1D7334', font='20',background='#409FDE').grid(row=0, column=1, sticky=W,padx=95)
+lb1_fr1 = Label(fr1, text='Tesouro Direto',foreground='#1CF00E', font='20',background='#409FDE').grid(row=0, column=1, sticky=W,padx=95)
 
 #---Configuração do Frame---
 fr1.grid()
