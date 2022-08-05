@@ -4,19 +4,28 @@ import time
 
 master = Tk()
 master.title("Portal Investidor")
-master.geometry("490x560+610+153")
+master.geometry("490x560+800+153")
 master.iconbitmap(default="icones\\ico.ico")
 master.resizable(width=1, height=1)
 
 
 # Funções
-def nova_janela():
+def Cadastro():
     master.destroy()
     time.sleep(0.3)
 
     master1 = Tk()
-    master1.title("Cadastro!!")
-    master1.geometry("490x560+400+153")
+    master1.title("Cadastro !")
+    master1.geometry("490x560+800+153")
+
+
+def Tela_investimento():
+    master.destroy()
+    time.sleep(0.3)
+
+    master1 = Tk()
+    master1.title("tela de investimento !")
+    master1.geometry("1200x500+400+153")    
 
 
 # Variáveis globais
@@ -41,10 +50,10 @@ en_senha.place(width=392, height=45, x=49, y=300)
 
 
 # Criação de botões
-bt_entrar = Button(master, bd=0, image=img_botao,)
+bt_entrar = Button(master, bd=0, image=img_botao,command=Tela_investimento)
 bt_entrar.place(width=118, height=64, x=280, y=408)
 
-bt_cadastro = Button(master, bd=0, image=img_botao2, command=nova_janela)
-bt_cadastro.place(width=50, height=64, x=280, y=408)
+bt_cadastro = Button(master, bd=0, image=img_botao2, command=Cadastro)
+bt_cadastro.place(width=171, height=64, x=74, y=408)
 
 master.mainloop()
