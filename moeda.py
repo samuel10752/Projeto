@@ -32,8 +32,8 @@ master.iconbitmap(default="icones\\ico.ico")
 
    
 
-fr0 = Frame(master)
-fr1 = Frame(master)
+fr0 = LabelFrame(master)
+fr1 = LabelFrame(master)
 
 # Variáveis globais
 esconda_senha = StringVar()
@@ -50,7 +50,8 @@ img_botao3_fr1 = PhotoImage(file="imagens\\cadastrar.png")
 lab_fundo_fr0 = Label(fr0, image=img_fundo_fr0)
 lab_fundo_fr0.pack()
 
-lab_fundo_fr1 = Label(fr1, image=img_fundo_fr1).pack()
+lab_fundo_fr1 = Label(fr1, image=img_fundo_fr1)
+lab_fundo_fr1.pack()
 
 
 # Criação de caixas de entrada
