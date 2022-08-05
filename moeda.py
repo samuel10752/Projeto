@@ -33,12 +33,16 @@ esconda_senha = StringVar()
 
 # Importar imagens
 img_fundo = PhotoImage(file="imagens\\fundo.png")
+img_fundo2 = PhotoImage(file="imagens\\fundo2.png")
 img_botao = PhotoImage(file="imagens\\bt-img.png")
 img_botao2 = PhotoImage(file="imagens\\cadastro.png")
 
 # Criação de labels
 lab_fundo = Label(master, image=img_fundo)
 lab_fundo.pack()
+
+lab_fundo2 = Label(master, image=img_fundo2)
+lab_fundo2.pack()
 
 
 # Criação de caixas de entrada
