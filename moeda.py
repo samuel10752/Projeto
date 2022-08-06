@@ -10,7 +10,7 @@ from turtle import width
 
 root = Tk()
 root.title("Portal Investidor")
-#root.resizable(height = False, width = False)
+root.resizable(height = False, width = False)
 root.geometry("484x560+800+155")
 root.iconbitmap(default="icones\\ico.ico")
 
@@ -35,6 +35,21 @@ def cpf(event=None):
     fr0_in2.delete(0, 'end')
     fr0_in2.insert(0, y)
 
+def cpf_1(event=None):
+    x=fr1_in0.get().replace('.','').replace('-', '')[:11]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            if i in [2,5]:
+                y+=x[i] + '.'
+            elif i == 8:
+                y+=x[i] + '-'
+            else:
+                y+=x[i]
+    fr1_in0.delete(0, 'end')
+    fr1_in0.insert(0, y)
+
 def cnpj(event=None):
             x=fr0_in2.get().replace('.','').replace('/', '').replace('-', '')[:14]
             y=''
@@ -53,26 +68,65 @@ def cnpj(event=None):
             fr0_in2.insert(0, y)
 
 
+def cnpj_1(event=None):
+            x=fr1_in0.get().replace('.','').replace('/', '').replace('-', '')[:14]
+            y=''
+            if event.keysym.lower() == "backspace": return
+            for i in range(len(x)):
+                if x[i] in '01234567891011':
+                    if i in [1,4]:
+                        y+=x[i] + '.'
+                    elif i == 7:
+                        y+=x[i] + '/'
+                    elif i == 11:
+                        y+=x[i] + '-' 
+                    else:
+                        y+=x[i]
+            fr1_in0.delete(0, 'end')
+            fr1_in0.insert(0, y)
+
 
 hello = StringVar()
 def mostrar(*args):
     fr0_in0 = Entry(fr0, textvariable=hello, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=37, y=302)
-
-    feecho =  Button(fr0, text='👁', font=('Mongolian Baiti', "30", "bold"),bg='blue',fg='#fff', command=esconder).place(width=45, height=45, x=436, y=302)
+    feecho =  Button(fr0, image=fr0_img_3,bd=0, command=esconder).place(width=45, height=45, x=436, y=302)
     
 def esconder(*args):
     fr0_in0 = Entry(fr0, textvariable=hello, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=37, y=302)
+    fr0_bt3 = Button(fr0, image=fr0_img_3,bd=0, command=mostrar).place(width=45, height=45, x=436, y=302)
 
-    fr0_bt3 = Button(fr0, text='👁', font=('Mongolian Baiti', "30", "bold"),bg='blue',fg='#fff', command=mostrar).place(width=45, height=45, x=436, y=302)
+hello_1 = StringVar()
+def mostrar_1(*args):
+    fr1_in1 = Entry(fr1, textvariable=hello_1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=245)
+    feecho = Button(fr1, bd=0, image=fr1_img_3, command=esconder_1).place(width=45, height=40, x=430, y=248) #Olho
+    
+def esconder_1(*args):
+    fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=245)
+    fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=248) #Olho
 
+hello_2 = StringVar()
+def mostrar_2(*args):
+    fr1_in2 = Entry(fr1, textvariable=hello_2, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=338)
+    feecho =  Button(fr1, bd=0, image=fr1_img_5, command=esconder_2).place(width=45, height=40, x=430, y=343) #Olho
+    
+def esconder_2(*args):
+    fr1_in2 = Entry(fr1, textvariable=hello_2, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=338)
+    fr1_bt4 = Button(fr1, bd=0, image=fr1_img_5, command=mostrar_2).place(width=45, height=40, x=430, y=343) #Olho
 
 # Importar imagens
 
+#frame 0
 fr0_img_1 = PhotoImage(file="imagens\\fundo.png")
-fr1_img_2 = PhotoImage(file="imagens\\fundo2.png")
-fr0_img_3 = PhotoImage(file="imagens\\bt-img.png")
+fr0_img_2 = PhotoImage(file="imagens\\entrar.png")
+fr0_img_3 = PhotoImage(file="imagens\\olho.png")
 fr0_img_4 = PhotoImage(file="imagens\\cadastro.png")
-fr1_img_5 = PhotoImage(file="imagens\\cadastrar.png")
+
+#frame 1
+fr1_img_1 = PhotoImage(file="imagens\\cadastrar.png")
+fr1_img_2 = PhotoImage(file="imagens\\fundo2.png")
+fr1_img_3 = PhotoImage(file="imagens\\olho.png")
+fr1_img_4 = PhotoImage(file="imagens\\voltar.png")
+fr1_img_5 = PhotoImage(file="imagens\\olho.png")
 
 # Criação de labels 
 
@@ -91,23 +145,41 @@ fr0_in3 = Entry(fr0, textvariable=hello, show="*", bd=2, font=("Calibri", 15), j
 
 # Criação de botões 
 
-fr0_bt0 = Button(fr0, bd=0, image=fr0_img_3).place(width=118, height=64, x=290, y=408)
+fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2).place(width=118, height=64, x=290, y=408)
 
 fr0_bt2 = Button(fr0, bd=0, image=fr0_img_4 , command=lambda: [fr0.grid_remove(), fr1.grid()]).place(width=174, height=64, x=63, y=408)
 
-fr0_bt3 = Button(fr0, text='👁', font=('Mongolian Baiti', "30", "bold"),bg='blue',fg='#fff', command=mostrar).place(width=45, height=45, x=436, y=302)
+fr0_bt3 = Button(fr0, bd=0, image=fr0_img_3, command=mostrar).place(width=45, height=45, x=436, y=302)
 
 
 # Frame 1
 
 # Criação de labels 
 
-fr1_lab2 = Label(fr1, image=fr1_img_2).grid(row=0,column=0) 
+fr1_lab2 = Label(fr1, image=fr1_img_2,width=480).grid(row=0,column=0) 
 
 # Criação de caixas de entrada 
 
+fr1_in0 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER)
+fr1_in0.place(width=392, height=45, x=30, y=152)
+fr1_in0.bind('<KeyRelease>', cpf_1)
+fr1_in0.bind('<KeyRelease>', cnpj_1)
+
+fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=245)
+
+fr1_in2 = Entry(fr1, textvariable=hello_2, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=338)
 
 # Criação de botões 
+
+
+fr1_bt0 = Button(fr1, bd=0, image=fr1_img_1, command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=173, height=64, x=243, y=430) #Cadastrar
+
+fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=248) #Olho
+
+fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=170, height=58, x=35, y=433) #Voltar
+
+fr1_bt4 = Button(fr1, bd=0, image=fr1_img_5, command=mostrar_2).place(width=45, height=40, x=430, y=343) #Olho
+
 
 
 fr0.grid()
