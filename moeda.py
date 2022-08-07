@@ -1,12 +1,12 @@
-
 from email.mime import image
 from logging import root
 from math import fabs
 from struct import pack
+from time import time
 from tkinter import *
 
 import tkinter as tk
-from turtle import width
+from turtle import title, width
 
 root = Tk()
 root.title("Portal Investidor")
@@ -15,8 +15,17 @@ root.geometry("484x560+800+155")
 root.iconbitmap(default="icones\\ico.ico")
 
 
+def investidor():
+    root.destroy()
+    time.sleep(0.3)
+
+    fr2 = Frame()
+    fr2.title("Nova Janela criada!!")
+    fr2.geometry("8000x560+400+153")
+
 fr0 = Frame()
 fr1 = Frame()
+
 
 # Variáveis globais
 
@@ -130,7 +139,8 @@ fr1_img_5 = PhotoImage(file="imagens\\olho.png")
 
 # Criação de labels 
 
-fro_lab = Label(fr0, image=fr0_img_1,width=480).grid(row=0,column=0,sticky=W)
+fr0_lab = Label(fr0, image=fr0_img_1,width=480).grid(row=0,column=0,sticky=W)
+
 
 # Criação de caixas de entrada  
 
@@ -145,7 +155,8 @@ fr0_in3 = Entry(fr0, textvariable=hello, show="*", bd=2, font=("Calibri", 15), j
 
 # Criação de botões 
 
-fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2).place(width=118, height=64, x=290, y=408)
+fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [fr1.grid_remove(), fr2.grid()]).place(width=118, height=64, x=290, y=408)
+
 
 fr0_bt2 = Button(fr0, bd=0, image=fr0_img_4 , command=lambda: [fr0.grid_remove(), fr1.grid()]).place(width=174, height=64, x=63, y=408)
 
@@ -179,6 +190,22 @@ fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, 
 fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=170, height=58, x=35, y=433) #Voltar
 
 fr1_bt4 = Button(fr1, bd=0, image=fr1_img_5, command=mostrar_2).place(width=45, height=40, x=430, y=343) #Olho
+
+
+
+# Frame 2
+
+
+
+# Criação de labels 
+
+
+# Criação de caixas de entrada 
+
+
+
+
+# Criação de botões 
 
 
 
