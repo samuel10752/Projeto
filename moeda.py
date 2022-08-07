@@ -5,6 +5,7 @@ from struct import pack
 from time import time
 from tkinter import *
 
+
 import tkinter as tk
 from turtle import title, width
 
@@ -14,14 +15,6 @@ root.resizable(height = False, width = False)
 root.geometry("484x560+800+155")
 root.iconbitmap(default="icones\\ico.ico")
 
-
-def investidor():
-    root.destroy()
-    time.sleep(0.3)
-
-    fr2 = Frame()
-    fr2.title("Nova Janela criada!!")
-    fr2.geometry("8000x560+400+153")
 
 fr0 = Frame()
 fr1 = Frame()
@@ -155,7 +148,7 @@ fr0_in3 = Entry(fr0, textvariable=hello, show="*", bd=2, font=("Calibri", 15), j
 
 # Criação de botões 
 
-fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [fr1.grid_remove(), fr2.grid()]).place(width=118, height=64, x=290, y=408)
+fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [fr1.grid_remove(),fr2.grid()]).place(width=118, height=64, x=290, y=408)
 
 
 fr0_bt2 = Button(fr0, bd=0, image=fr0_img_4 , command=lambda: [fr0.grid_remove(), fr1.grid()]).place(width=174, height=64, x=63, y=408)
