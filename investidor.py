@@ -10,6 +10,7 @@ root.iconbitmap(default="icones\\ico.ico")
 
 
 fr2 = Frame()
+fr3 = Frame()
 
 #frame 2
 fr2_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -17,6 +18,9 @@ fr2_img_2 = PhotoImage(file="imagens\\guardar.png")
 fr2_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr2_img_4 = PhotoImage(file="imagens\\vender.png")
 fr2_img_5 = PhotoImage(file="imagens\\tabela.png")
+
+#frame 3
+fr3_img_1= PhotoImage(file="imagens\\compra.png")
 
 # Criação de labels 
 
@@ -26,9 +30,15 @@ fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y
 # Criação de botões 
 
 fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2).place(width=223, height=60, x=675, y=32)
-fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3).place(width=223, height=60, x=54, y=32)
+fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3,command=lambda: [fr2.grid_configure, fr3.place()]).place(width=223, height=60, x=54, y=32)
 fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4).place(width=223, height=60, x=367, y=32)
 
 
+# frame 3
+# Criação de labels 
+
+fr3_lab = Label(fr3,bd=0, image=fr3_img_1).place(width=305, height=65, x=974, y=26)
+
+fr3.place()
 fr2.grid()
 root.mainloop()
