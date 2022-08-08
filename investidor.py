@@ -21,7 +21,7 @@ fr2_img_5 = PhotoImage(file="imagens\\tabela.png")
 # Criação de labels 
 
 fr2_lab = Label(fr2, image=fr2_img_1, width=1285).grid(row=0,column=0,sticky=W)
-fr2_lab1 = Label(fr2, image=fr2_img_5, width=300).grid(row=0,column=0,sticky=W, padx=974,pady=50)
+fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y=26)
 
 # Criação de botões 
 
