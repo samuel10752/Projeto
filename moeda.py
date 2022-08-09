@@ -144,6 +144,7 @@ fr3_img_6 = PhotoImage(file="imagens\\compra.png")
 fr3_img_7 = PhotoImage(file="imagens\\comprar.png")
 fr3_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr3_img_9 = PhotoImage(file="imagens\\confirmar.png")
+fr3_img_10 = PhotoImage(file="imagens\\grafico.png")
 #frame 4
 fr4_img_1 = PhotoImage(file="imagens\\tela.png")
 fr4_img_2 = PhotoImage(file="imagens\\guardar.png")
@@ -153,6 +154,7 @@ fr4_img_5 = PhotoImage(file="imagens\\tabela.png")
 fr4_img_6= PhotoImage(file="imagens\\venda.png")
 fr4_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr4_img_9 = PhotoImage(file="imagens\\confirmar.png")
+fr4_img_10 = PhotoImage(file="imagens\\grafico.png")
 
 #frame 5
 fr5_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -163,7 +165,7 @@ fr5_img_5 = PhotoImage(file="imagens\\tabela.png")
 fr5_img_6= PhotoImage(file="imagens\\moeda e investir.png")
 fr5_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr5_img_9 = PhotoImage(file="imagens\\confirmar.png")
-
+fr5_img_10 = PhotoImage(file="imagens\\grafico.png")
 #frame 6
 
 
@@ -246,7 +248,7 @@ fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove()
 
 fr2_lab = Label(fr2, image=fr2_img_1, width=1285).grid(row=0,column=0,sticky=W)
 fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y=26)
-fr2_lab2 = Label(fr2, image=fr2_img_6, width=500).place(width=305, height=65, x=974, y=26) # i
+fr2_lab2 = Label(fr2, image=fr2_img_6, width=1000).place(width=950, height=470, x=5, y=125) # i
 
 # Criação de botões 
 
@@ -271,7 +273,8 @@ fr3_lab1 = Label(fr3, image=fr3_img_6,bd=0).place(width=310, height=470, x=970, 
 
 # image tabela
 fr3_lab2 = Label(fr3,bd=0, image=fr3_img_5).place(width=305, height=65, x=974, y=26)
-
+#tela do grafico
+fr3_lab3 = Label(fr3, image=fr3_img_10, width=1000).place(width=950, height=470, x=5, y=125) # 
 # Criação de botões 
 
 # Botão de guardar
@@ -307,6 +310,8 @@ fr4_lab1 = Label(fr4,bd=0, image=fr4_img_6).place(width=310, height=470, x=970, 
 # image tabela
 fr4_lab2 = Label(fr4,bd=0, image=fr4_img_5).place(width=305, height=65, x=974, y=26)
 
+#tela do grafico
+fr4_lab3 = Label(fr4, image=fr4_img_10, width=1000).place(width=950, height=470, x=5, y=125) #
 # Criação de botões 
 
 # Botão de guardar
@@ -340,6 +345,8 @@ fr5_lab1 = Label(fr5,bd=0, image=fr5_img_6).place(width=310, height=470, x=970, 
 # imagem Tabela 
 fr5_lab2 = Label(fr5,bd=0, image=fr5_img_5).place(width=305, height=65, x=974, y=26)
 
+#tela do grafico
+fr5_lab3 = Label(fr5, image=fr5_img_10, width=1000).place(width=950, height=470, x=5, y=125) #
 # Criação de botões 
 
 # Botão de guardar
