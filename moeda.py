@@ -21,6 +21,7 @@ fr1 = Frame()
 fr2 = Frame()
 fr3 = Frame()
 fr4 = Frame()
+fr5 = Frame()
 
 
 # Variáveis globais
@@ -132,15 +133,14 @@ fr2_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr2_img_4 = PhotoImage(file="imagens\\vender.png")
 fr2_img_5 = PhotoImage(file="imagens\\tabela.png")
 
+
 #frame 3
-#fr3_img_1= PhotoImage(file="imagens\\compra.png")
 fr3_img_1 = PhotoImage(file="imagens\\tela.png")
 fr3_img_2 = PhotoImage(file="imagens\\guardar.png")
 fr3_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr3_img_4 = PhotoImage(file="imagens\\vender.png")
 fr3_img_5 = PhotoImage(file="imagens\\tabela.png")
-fr3_img_6= PhotoImage(file="imagens\\moeda e investir.png")
-
+fr3_img_6 = PhotoImage(file="imagens\\compra.png")
 
 #frame 4
 fr4_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -148,9 +148,16 @@ fr4_img_2 = PhotoImage(file="imagens\\guardar.png")
 fr4_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr4_img_4 = PhotoImage(file="imagens\\vender.png")
 fr4_img_5 = PhotoImage(file="imagens\\tabela.png")
-fr4_img_6= PhotoImage(file="imagens\\compra.png")
+fr4_img_6= PhotoImage(file="imagens\\venda.png")
 
 #frame 5
+fr5_img_1 = PhotoImage(file="imagens\\tela.png")
+fr5_img_2 = PhotoImage(file="imagens\\guardar.png")
+fr5_img_3 = PhotoImage(file="imagens\\comprar.png")
+fr5_img_4 = PhotoImage(file="imagens\\vender.png")
+fr5_img_5 = PhotoImage(file="imagens\\tabela.png")
+fr5_img_6= PhotoImage(file="imagens\\moeda e investir.png")
+
 
 
 # Criação de labels 
@@ -237,38 +244,38 @@ fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y
 # Criação de botões 
 
 # Botão de guardar
-fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
-# Botão de guardar
-fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
-# Botão de guardar
-fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+# Botão de comprar
+fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+# Botão de vender
+fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
 
-# frame 3
+
+# frame 3 # tela da Compra
 
 # Criação de labels 
 
+# tela do Investidor de Compra
+fr3_lab = Label(fr3, image=fr3_img_1, width=1285).grid(row=0,column=0,sticky=W)
 
-# tela do Investidor de Guardar
-fr3_lab = Label(fr3, image=fr3_img_1, width=1285).grid(row=0,column=0,sticky=W) # imagem de fundo
-
-# imagem do moeda e investir
+# imahem compra
 fr3_lab1 = Label(fr3,bd=0, image=fr3_img_6).place(width=310, height=470, x=970, y=130)
 
-# imagem Tabela 
+# image tabela
 fr3_lab2 = Label(fr3,bd=0, image=fr3_img_5).place(width=305, height=65, x=974, y=26)
 
 # Criação de botões 
 
 # Botão de guardar
-fr3_bt1 = Button(fr3, bd=0, image=fr3_img_2, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
-# Botão de guardar
-fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3,command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
-# Botão de guardar
-fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4,command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+fr3_bt1 = Button(fr3, bd=0, image=fr3_img_2, command= lambda:[fr3.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+# Botão de comprar
+fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3, command= lambda:[fr3.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+# Botão de vender
+fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
 
-# frame 4
+# frame 4 # tela da Venda
 
 # Criação de labels 
 
@@ -284,11 +291,34 @@ fr4_lab2 = Label(fr4,bd=0, image=fr4_img_5).place(width=305, height=65, x=974, y
 # Criação de botões 
 
 # Botão de guardar
-fr4_bt1 = Button(fr4, bd=0, image=fr4_img_2, command= lambda:[fr4.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+fr4_bt1 = Button(fr4, bd=0, image=fr4_img_2, command= lambda:[fr4.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
 # Botão de comprar
-fr4_bt2 = Button(fr4, bd=0, image=fr4_img_3, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+fr4_bt2 = Button(fr4, bd=0, image=fr4_img_3, command= lambda:[fr4.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de vender
-fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr4.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+
+# frame 5 Tela de Guardar
+
+# Criação de labels 
+
+# tela do Investidor de Guardar
+fr5_lab = Label(fr5, image=fr5_img_1, width=1285).grid(row=0,column=0,sticky=W) # imagem de fundo
+
+# imagem do moeda e investir
+fr5_lab1 = Label(fr5,bd=0, image=fr5_img_6).place(width=310, height=470, x=970, y=130)
+
+# imagem Tabela 
+fr5_lab2 = Label(fr5,bd=0, image=fr5_img_5).place(width=305, height=65, x=974, y=26)
+
+# Criação de botões 
+
+# Botão de guardar
+fr5_bt1 = Button(fr5, bd=0, image=fr5_img_2, command= lambda:[fr5.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+# Botão de compra
+fr5_bt2 = Button(fr5, bd=0, image=fr5_img_3,command= lambda:[fr5.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+# Botão de venda
+fr5_bt3 = Button(fr5, bd=0, image=fr5_img_4,command= lambda:[fr5.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+
 
 fr0.grid()
 root.mainloop()
