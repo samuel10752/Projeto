@@ -20,6 +20,8 @@ fr0 = Frame()
 fr1 = Frame()
 fr2 = Frame()
 fr3 = Frame()
+fr4 = Frame()
+
 
 # Variáveis globais
 
@@ -100,21 +102,13 @@ def esconder(*args):
 
 hello_1 = StringVar()
 def mostrar_1(*args):
-    fr1_in1 = Entry(fr1, textvariable=hello_1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=245)
-    feecho = Button(fr1, bd=0, image=fr1_img_3, command=esconder_1).place(width=45, height=40, x=430, y=248) #Olho
+    fr1_in1 = Entry(fr1, textvariable=hello_1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=23, y=425)
+    feecho = Button(fr1, bd=0, image=fr1_img_3, command=esconder_1).place(width=45, height=40, x=430, y=430)
     
 def esconder_1(*args):
-    fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=245)
-    fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=248) #Olho
+    fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=23, y=425)
+    fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=430)
 
-hello_2 = StringVar()
-def mostrar_2(*args):
-    fr1_in2 = Entry(fr1, textvariable=hello_2, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=338)
-    feecho =  Button(fr1, bd=0, image=fr1_img_5, command=esconder_2).place(width=45, height=40, x=430, y=343) #Olho
-    
-def esconder_2(*args):
-    fr1_in2 = Entry(fr1, textvariable=hello_2, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=338)
-    fr1_bt4 = Button(fr1, bd=0, image=fr1_img_5, command=mostrar_2).place(width=45, height=40, x=430, y=343) #Olho
 
 # Importar imagens
 
@@ -140,80 +134,161 @@ fr2_img_5 = PhotoImage(file="imagens\\tabela.png")
 
 #frame 3
 #fr3_img_1= PhotoImage(file="imagens\\compra.png")
-#fr3_img_2= PhotoImage(file="imagens\\venda.png")
-fr3_img_3= PhotoImage(file="imagens\\moeda e investir.png")
+fr3_img_1 = PhotoImage(file="imagens\\tela.png")
+fr3_img_2 = PhotoImage(file="imagens\\guardar.png")
+fr3_img_3 = PhotoImage(file="imagens\\comprar.png")
+fr3_img_4 = PhotoImage(file="imagens\\vender.png")
+fr3_img_5 = PhotoImage(file="imagens\\tabela.png")
+fr3_img_6= PhotoImage(file="imagens\\moeda e investir.png")
+
+
+#frame 4
+fr4_img_1 = PhotoImage(file="imagens\\tela.png")
+fr4_img_2 = PhotoImage(file="imagens\\guardar.png")
+fr4_img_3 = PhotoImage(file="imagens\\comprar.png")
+fr4_img_4 = PhotoImage(file="imagens\\vender.png")
+fr4_img_5 = PhotoImage(file="imagens\\tabela.png")
+fr4_img_6= PhotoImage(file="imagens\\compra.png")
+
+#frame 5
+
 
 # Criação de labels 
+
+#tela de fundo da tela de login
 
 fr0_lab = Label(fr0, image=fr0_img_1,width=480).grid(row=0,column=0,sticky=W)
 
 
 # Criação de caixas de entrada  
 
-#frame 0
+#frame 0 Tela de login
 
+#entre do cpf e cnpj
 fr0_in2 = Entry(fr0, bd=2, font=("Calibri", 15), justify=CENTER)
 fr0_in2.place(width=392, height=45, x=37, y=185)
 fr0_in2.bind('<KeyRelease>', cpf)
 fr0_in2.bind('<KeyRelease>', cnpj)
 
+#Entre da senha  
 fr0_in3 = Entry(fr0, textvariable=hello, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=37, y=302)
 
 # Criação de botões 
 
+# Botão do entrar
 fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [fr0.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")]).place(width=118, height=64, x=290, y=408)
 
-
+# Botão do cadastro
 fr0_bt2 = Button(fr0, bd=0, image=fr0_img_4 , command=lambda: [fr0.grid_remove(), fr1.grid()]).place(width=174, height=64, x=63, y=408)
 
+# Botão do olho
 fr0_bt3 = Button(fr0, bd=0, image=fr0_img_3, command=mostrar).place(width=45, height=45, x=436, y=302)
 
 
-# Frame 1
+# Frame 1 Tela de Cadastro
 
 # Criação de labels 
 
+#tela de fundo do Cadastro
 fr1_lab2 = Label(fr1, image=fr1_img_2,width=480).grid(row=0,column=0) 
 
 # Criação de caixas de entrada 
 
+#entre do cpf e cnpj
 fr1_in0 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER)
-fr1_in0.place(width=392, height=45, x=30, y=152)
+fr1_in0.place(width=392, height=45, x=20, y=130)
 fr1_in0.bind('<KeyRelease>', cpf_1)
 fr1_in0.bind('<KeyRelease>', cnpj_1)
 
-fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=245)
+#Entre da senha  
+fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=23, y=425)
 
-fr1_in2 = Entry(fr1, textvariable=hello_2, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=30, y=338)
+
+#Entre do Nome
+fr1_in2 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=20, y=202)
+
+#Entre do Data de Nascimento
+fr1_in3 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=22, y=273)
+
+#Entre do telefone
+fr1_in4 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=22, y=343)
 
 # Criação de botões 
 
 
-fr1_bt0 = Button(fr1, bd=0, image=fr1_img_1, command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=173, height=64, x=243, y=430) #Cadastrar
+# Botão do Cadastrar
+fr1_bt0 = Button(fr1, bd=0, image=fr1_img_1, command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=173, height=64, x=243, y=488) #Cadastrar
 
-fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=248) #Olho
+# Botão do olho
+fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=430) #Olho
 
-fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=170, height=58, x=35, y=433) #Voltar
+# Botão do Voltar
+fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=170, height=58, x=35, y=490) #Voltar
 
-fr1_bt4 = Button(fr1, bd=0, image=fr1_img_5, command=mostrar_2).place(width=45, height=40, x=430, y=343) #Olho
 
+# frame 2 Tela do investidor
 
 # Criação de labels 
 
 fr2_lab = Label(fr2, image=fr2_img_1, width=1285).grid(row=0,column=0,sticky=W)
 fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y=26)
-#width=305, height=65, x=974, y=26
+
 
 # Criação de botões 
 
-fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2,command= lambda:[fr3.place()]).place(width=223, height=60, x=675, y=32)
-fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3).place(width=223, height=60, x=54, y=32)
-fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4).place(width=223, height=60, x=367, y=32)
+# Botão de guardar
+fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+# Botão de guardar
+fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+# Botão de guardar
+fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
 
 # frame 3
+
 # Criação de labels 
-fr3_lab = Label(fr3,bd=0, image=fr3_img_3).place(width=310, height=470, x=970, y=130)
+
+
+# tela do Investidor de Guardar
+fr3_lab = Label(fr3, image=fr3_img_1, width=1285).grid(row=0,column=0,sticky=W) # imagem de fundo
+
+# imagem do moeda e investir
+fr3_lab1 = Label(fr3,bd=0, image=fr3_img_6).place(width=310, height=470, x=970, y=130)
+
+# imagem Tabela 
+fr3_lab2 = Label(fr3,bd=0, image=fr3_img_5).place(width=305, height=65, x=974, y=26)
+
+# Criação de botões 
+
+# Botão de guardar
+fr3_bt1 = Button(fr3, bd=0, image=fr3_img_2, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+# Botão de guardar
+fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3,command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+# Botão de guardar
+fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4,command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+
+
+# frame 4
+
+# Criação de labels 
+
+# tela do Investidor de Compra
+fr4_lab = Label(fr4, image=fr4_img_1, width=1285).grid(row=0,column=0,sticky=W)
+
+# imahem compra
+fr4_lab1 = Label(fr4,bd=0, image=fr4_img_6).place(width=310, height=470, x=970, y=130)
+
+# image tabela
+fr4_lab2 = Label(fr4,bd=0, image=fr4_img_5).place(width=305, height=65, x=974, y=26)
+
+# Criação de botões 
+
+# Botão de guardar
+fr4_bt1 = Button(fr4, bd=0, image=fr4_img_2, command= lambda:[fr4.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+# Botão de comprar
+fr4_bt2 = Button(fr4, bd=0, image=fr4_img_3, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+# Botão de vender
+fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
 fr0.grid()
 root.mainloop()
