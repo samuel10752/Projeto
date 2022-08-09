@@ -22,7 +22,7 @@ fr2 = Frame()
 fr3 = Frame()
 fr4 = Frame()
 fr5 = Frame()
-
+fr6 = Frame()
 
 # Variáveis globais
 
@@ -132,7 +132,7 @@ fr2_img_2 = PhotoImage(file="imagens\\guardar.png")
 fr2_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr2_img_4 = PhotoImage(file="imagens\\vender.png")
 fr2_img_5 = PhotoImage(file="imagens\\tabela.png")
-
+fr2_img_6 = PhotoImage(file="imagens\\grafico.png")
 
 #frame 3
 fr3_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -163,6 +163,8 @@ fr5_img_5 = PhotoImage(file="imagens\\tabela.png")
 fr5_img_6= PhotoImage(file="imagens\\moeda e investir.png")
 fr5_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr5_img_9 = PhotoImage(file="imagens\\confirmar.png")
+
+#frame 6
 
 
 # Criação de labels 
@@ -244,7 +246,7 @@ fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove()
 
 fr2_lab = Label(fr2, image=fr2_img_1, width=1285).grid(row=0,column=0,sticky=W)
 fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y=26)
-
+fr2_lab2 = Label(fr2, image=fr2_img_6, width=500).place(width=305, height=65, x=974, y=26) # i
 
 # Criação de botões 
 
@@ -358,6 +360,7 @@ fr5_in2 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=9
 fr5_in3 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=990, y=348) #Tempo
 fr5_in4 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=990, y=403) #Rendimento
 fr5_in5 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=991, y=460) #Montante
+
 
 fr0.grid()
 root.mainloop()
