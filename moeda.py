@@ -251,7 +251,6 @@ fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),
 fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
 
-
 # frame 3 # tela da Compra
 
 # Criação de labels 
@@ -276,7 +275,7 @@ fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3, command= lambda:[fr3.grid_remove(),
 fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
 
-fr5_in1 = Entry(fr5, bd=5, font=("Calibri", 15)).place(width=392, height=45, x=22, y=343)
+fr3_in1 = Entry(fr3, bd=5, font=("Calibri", 15)).place(width=392, height=45, x=22, y=343)
 # frame 4 # tela da Venda
 
 # Criação de labels 
