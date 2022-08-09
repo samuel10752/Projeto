@@ -11,7 +11,7 @@ from turtle import title, width
 
 root = Tk()
 root.title("Portal Investidor")
-#root.resizable(height = False, width = False)
+root.resizable(height = False, width = False)
 root.geometry("484x560+800+155")
 root.iconbitmap(default="icones\\ico.ico")
 
@@ -142,6 +142,8 @@ fr3_img_4 = PhotoImage(file="imagens\\vender.png")
 fr3_img_5 = PhotoImage(file="imagens\\tabela.png")
 fr3_img_6 = PhotoImage(file="imagens\\compra.png")
 fr3_img_7 = PhotoImage(file="imagens\\comprar.png")
+fr3_img_8 = PhotoImage(file="imagens\\limpa.png")
+fr3_img_9 = PhotoImage(file="imagens\\confirmar.png")
 #frame 4
 fr4_img_1 = PhotoImage(file="imagens\\tela.png")
 fr4_img_2 = PhotoImage(file="imagens\\guardar.png")
@@ -149,6 +151,8 @@ fr4_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr4_img_4 = PhotoImage(file="imagens\\vender.png")
 fr4_img_5 = PhotoImage(file="imagens\\tabela.png")
 fr4_img_6= PhotoImage(file="imagens\\venda.png")
+fr4_img_8 = PhotoImage(file="imagens\\limpa.png")
+fr4_img_9 = PhotoImage(file="imagens\\confirmar.png")
 
 #frame 5
 fr5_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -157,7 +161,8 @@ fr5_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr5_img_4 = PhotoImage(file="imagens\\vender.png")
 fr5_img_5 = PhotoImage(file="imagens\\tabela.png")
 fr5_img_6= PhotoImage(file="imagens\\moeda e investir.png")
-
+fr5_img_8 = PhotoImage(file="imagens\\limpa.png")
+fr5_img_9 = PhotoImage(file="imagens\\confirmar.png")
 
 
 # Criação de labels 
@@ -273,9 +278,20 @@ fr3_bt1 = Button(fr3, bd=0, image=fr3_img_2, command= lambda:[fr3.grid_remove(),
 fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3, command= lambda:[fr3.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de vender
 fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+# Botão de limpar
+fr3_bt4 = Button(fr3, bd=0, image=fr3_img_8).place(width=115, height=42, x=996, y=503)
+#  botão de Confirmar
+fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9).place(width=115, height=42, x=1137, y=504)
 
 
-fr3_in1 = Entry(fr3, bd=5, font=("Calibri", 15)).place(width=392, height=45, x=22, y=343)
+
+fr3_in1 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=995, y=200) #moeda
+fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=995, y=260) #capital
+fr3_in3 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=325) #ganho
+fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=387) #Tempo
+fr3_in5 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=450) #Montante
+
+
 # frame 4 # tela da Venda
 
 # Criação de labels 
@@ -298,8 +314,16 @@ fr4_bt2 = Button(fr4, bd=0, image=fr4_img_3, command= lambda:[fr4.grid_remove(),
 # Botão de vender
 fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr4.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
+# Botão de limpar
+fr4_bt4 = Button(fr4, bd=0, image=fr4_img_8).place(width=115, height=42, x=996, y=504)
+#  botão de Confirmar
+fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9).place(width=115, height=42, x=1137, y=504)
 
-fr4_in1 = Entry(fr4, bd=5, font=("Calibri", 15)).place(width=392, height=45, x=22, y=343)
+
+fr4_in1 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=993, y=222) #moeda a vender
+fr4_in2 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=993, y=287) #capital
+fr4_in3 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=993, y=390) #moeda a comprar
+fr4_in4 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=993, y=454) #Montante
 
 # frame 5 Tela de Guardar
 
@@ -322,8 +346,18 @@ fr5_bt1 = Button(fr5, bd=0, image=fr5_img_2, command= lambda:[fr5.grid_remove(),
 fr5_bt2 = Button(fr5, bd=0, image=fr5_img_3,command= lambda:[fr5.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de venda
 fr5_bt3 = Button(fr5, bd=0, image=fr5_img_4,command= lambda:[fr5.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+# Botão de limpar
+fr5_bt4 = Button(fr5, bd=0, image=fr5_img_8).place(width=115, height=42, x=996, y=510)
+#  botão de Confirmar
+fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9).place(width=115, height=42, x=1130, y=510)
 
-fr5_in1 = Entry(fr5, bd=5, font=("Calibri", 15)).place(width=392, height=45, x=22, y=343)
+
+
+fr5_in1 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=992, y=222) #moeda a Inserir
+fr5_in2 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=992, y=287) #capital
+fr5_in3 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=990, y=348) #Tempo
+fr5_in4 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=990, y=403) #Rendimento
+fr5_in5 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=991, y=460) #Montante
 
 fr0.grid()
 root.mainloop()
