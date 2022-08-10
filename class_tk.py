@@ -27,6 +27,190 @@ fr5 = Frame()
 
 
 # Variáveis globais
+# Letras maiusculas telas 
+var1 =StringVar()
+def maiusculo(*args):
+    var1.set(var1.get().upper())
+var1.trace("w", maiusculo)
+
+var2 =StringVar()
+def maiusculo(*args):
+    var2.set(var2.get().upper())
+var2.trace("w", maiusculo)
+
+var3 =StringVar()
+def maiusculo(*args):
+    var3.set(var3.get().upper())
+var3.trace("w", maiusculo)
+
+var4 =StringVar()
+def maiusculo(*args):
+    var4.set(var4.get().upper())
+var4.trace("w", maiusculo)
+
+#tela do nome
+var5 =StringVar()
+def maiusculo(*args):
+    var5.set(var5.get().title())
+var5.trace("w", maiusculo)
+
+def nome(event=None):
+    x=fr1_in2.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] not in '0123456789':
+            y+=x[i]
+    fr1_in2.delete(0, 'end')
+    fr1_in2.insert(0, y)
+
+#Data de nascimento
+
+def data_nasc(event=None):
+    x=fr1_in3.get().replace('/','')[:8]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if not x[i] in '0123456789': continue
+        if i in [3,5]:
+            y+=x[i] + '/'
+        else:
+            y+=x[i]
+    fr1_in3.delete(0, 'end')
+    fr1_in3.insert(0, y)
+
+#telefone Cadastro
+def telefone_cadastro(event=None):
+    x=fr1_in4.get().replace('(','').replace(')', '').replace('-', '')[:12]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if not x[i] in '0123456789': continue
+        if i in [0]:
+            y+= '(' + x[i]
+        elif i in [2]:
+            y+= x[i] + ')'
+        elif i in [3, 7]:
+            y+= x[i] + '-'
+        else:
+            y+=x[i]
+    fr1_in4.delete(0, 'end')
+    fr1_in4.insert(0, y)
+
+#tela do capital tempo
+def compra_tempo(event=None):
+    x=fr3_in4.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y+=x[i]
+    fr3_in4.delete(0, 'end')
+    fr3_in4.insert(0, y)
+
+#venda moeda investi
+def venda_moedacompra(event=None):
+    x=fr3_in4.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y+=x[i]
+    fr3_in4.delete(0, 'end')
+    fr3_in4.insert(0, y)
+
+
+#venda moeda comprar
+def venda_moedainvesti(event=None):
+    x=fr4_in3 .get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y+=x[i]
+    fr4_in3 .delete(0, 'end')
+    fr4_in3 .insert(0, y)
+
+#guadar tempo    
+def guarda_tempo(event=None):
+    x=fr5_in3 .get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y+=x[i]
+    fr5_in3 .delete(0, 'end')
+    fr5_in3 .insert(0, y)
+
+# Compra capital tela 
+def comprar_capital(event=None):
+    x = fr3_in2 .get().replace(',', '.')
+    y = ''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y += x[i]
+        elif x[i] in '.':
+            y += x[i]
+        else:
+            y += ''
+    if y.count('.') > 1:
+        y=y[:-1]
+    fr3_in2 .delete(0, 'end')
+    fr3_in2 .insert(0, y)
+
+# guarada capital tela 
+def guarda_capital(event=None):
+    x = fr5_in2 .get().replace(',', '.')
+    y = ''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y += x[i]
+        elif x[i] in '.':
+            y += x[i]
+        else:
+            y += ''
+    if y.count('.') > 1:
+        y=y[:-1]
+    fr5_in2 .delete(0, 'end')
+    fr5_in2 .insert(0, y)    
+
+#Venda capital tela
+def venda_capital(event=None):
+    x = fr4_in2 .get().replace(',', '.')
+    y = ''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y += x[i]
+        elif x[i] in '.':
+            y += x[i]
+        else:
+            y += ''
+    if y.count('.') > 1:
+        y=y[:-1]
+    fr4_in2 .delete(0, 'end')
+    fr4_in2 .insert(0, y)
+
+#guadar capital tela
+def guarda_capital(event=None):
+    x = fr5_in2 .get().replace(',', '.')
+    y = ''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            y += x[i]
+        elif x[i] in '.':
+            y += x[i]
+        else:
+            y += ''
+    if y.count('.') > 1:
+        y=y[:-1]
+    fr5_in2 .delete(0, 'end')
+    fr5_in2 .insert(0, y)
+
+
 
 def cpf(event=None):
     x=fr0_in2.get().replace('.','').replace('-', '')[:11]
@@ -238,25 +422,31 @@ fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15),
 
 
 #Entre do Nome
-fr1_in2 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=20, y=202)
+fr1_in2 = Entry(fr1, bd=2, textvariable=var5,font=("Calibri", 15), justify=CENTER)
+fr1_in2.place(width=392, height=45, x=20, y=202)
+fr1_in2.bind('<KeyRelease>', nome)
 
 #Entre do Data de Nascimento
-fr1_in3 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=22, y=273)
+fr1_in3 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER)
+fr1_in3.place(width=392, height=45, x=22, y=273)
+fr1_in3.bind('<KeyRelease>', data_nasc)
 
 #Entre do telefone
-fr1_in4 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=22, y=343)
+fr1_in4 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER)
+fr1_in4.place(width=392, height=45, x=22, y=343)
+fr1_in4.bind('<KeyRelease>', telefone_cadastro)
 
 # Criação de botões 
 
 
 # Botão do Cadastrar
-fr1_bt0 = Button(fr1, bd=0, image=fr1_img_1, command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=173, height=64, x=243, y=488) #Cadastrar
+fr1_bt0 = Button(fr1, bd=0, image=fr1_img_1, command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=173, height=64, x=265, y=488) #Cadastrar
 
 # Botão do olho
 fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=430) #Olho
 
 # Botão do Voltar
-fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=170, height=58, x=35, y=490) #Voltar
+fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=170, height=58, x=46, y=491) #Voltar
 
 
 # frame 2 Tela do investidor
@@ -327,10 +517,15 @@ fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9).place(width=115, height=42, x=1137,
 
 
 
-fr3_in1 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=995, y=200) #moeda
-fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=995, y=265) #capital
-fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=325) #Tempo
+fr3_in1 = Entry(fr3, bd=2,textvariable=var1, font=("Calibri", 15)).place(width=140, height=24, x=995, y=200) #moeda
 
+fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15))
+fr3_in2.place(width=140, height=24, x=995, y=265) #capital
+fr3_in2.bind("<KeyRelease>", comprar_capital) #capital
+
+fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15))
+fr3_in4.place(width=145, height=24, x=995, y=325) #Tempo
+fr3_in4.bind("<KeyRelease>", compra_tempo) #capital
 
 
 # frame 4 # tela da Venda
@@ -372,9 +567,17 @@ fr4_bt4 = Button(fr4, bd=0, image=fr4_img_8).place(width=115, height=42, x=996, 
 fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9).place(width=115, height=42, x=1137, y=504)
 
 
-fr4_in1 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=993, y=222) #moeda a vender
-fr4_in2 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=993, y=287) #capital
-fr4_in3 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=993, y=390) #moeda a comprar
+fr4_in1 = Entry(fr4, bd=2,textvariable=var2, font=("Calibri", 15))
+fr4_in1.place(width=140, height=24, x=993, y=222) #moeda a vender
+fr4_in1.bind("<KeyRelease>",venda_moedainvesti)
+
+fr4_in2 = Entry(fr4, bd=2, font=("Calibri", 15))
+fr4_in2.place(width=140, height=24, x=993, y=287) #capital
+fr4_in2.bind("<KeyRelease>", venda_capital) 
+
+fr4_in3 = Entry(fr4,textvariable=var3, bd=2, font=("Calibri", 15))
+fr4_in3.bind("<KeyRelease>",venda_moedacompra)
+fr4_in3.place(width=145, height=24, x=993, y=390) #moeda a comprar
 
 # frame 5 Tela de Guardar
 
@@ -413,11 +616,15 @@ fr5_bt4 = Button(fr5, bd=0, image=fr5_img_8).place(width=115, height=42, x=996, 
 #  botão de Confirmar
 fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9).place(width=115, height=42, x=1130, y=510)
 
+fr5_in1 = Entry(fr5, bd=2,textvariable=var4, font=("Calibri", 15)).place(width=140, height=24, x=992, y=222) #moeda a Inserir
 
+fr5_in2 = Entry(fr5, bd=2, font=("Calibri", 15))
+fr5_in2.place(width=140, height=24, x=992, y=287) #capital
+fr5_in2.bind("<KeyRelease>",guarda_capital)
 
-fr5_in1 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=992, y=222) #moeda a Inserir
-fr5_in2 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=992, y=287) #capital
-fr5_in3 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=990, y=348) #Tempo
+fr5_in3 = Entry(fr5, bd=2, font=("Calibri", 15))
+fr5_in3.place(width=145, height=24, x=990, y=348) 
+fr5_in3.bind("<KeyRelease>",guarda_tempo)#Tempo
 
 
 
