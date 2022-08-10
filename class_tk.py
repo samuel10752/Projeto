@@ -1,3 +1,5 @@
+from cProfile import label
+from cgitb import text
 from email.mime import image
 from logging import root
 from math import fabs
@@ -308,6 +310,8 @@ fr3_lab5 = Label(fr3,bd=0, image=fr3_img_12).place(width=218, height=52, x=222, 
 
 fr3_lab6 = Label(fr3,bd=0, image=fr3_img_13).place(width=480, height=52, x=462, y=148) # label media
 
+fr3_lab7 = Label(fr3, text='ola', font=("Calibri", 15)).place(width=145, height=24, x=995, y=400) #Montante
+
 # Criação de botões 
 
 # Botão de guardar
@@ -324,10 +328,9 @@ fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9).place(width=115, height=42, x=1137,
 
 
 fr3_in1 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=995, y=200) #moeda
-fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=995, y=260) #capital
-fr3_in3 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=325) #ganho
-fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=387) #Tempo
-fr3_in5 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=450) #Montante
+fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=995, y=265) #capital
+fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=995, y=325) #Tempo
+
 
 
 # frame 4 # tela da Venda
@@ -352,6 +355,8 @@ fr4_lab5 = Label(fr4,bd=0, image=fr4_img_12).place(width=218, height=52, x=222, 
 
 fr4_lab6 = Label(fr4,bd=0, image=fr4_img_13).place(width=480, height=52, x=462, y=148) # label media
 
+fr4_lab7 = Label(fr4,text='ola', font=("Calibri", 15)).place(width=145, height=24, x=993, y=454) #Montante
+
 # Criação de botões 
 
 # Botão de guardar
@@ -370,7 +375,6 @@ fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9).place(width=115, height=42, x=1137,
 fr4_in1 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=993, y=222) #moeda a vender
 fr4_in2 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=993, y=287) #capital
 fr4_in3 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=993, y=390) #moeda a comprar
-fr4_in4 = Entry(fr4, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=993, y=454) #Montante
 
 # frame 5 Tela de Guardar
 
@@ -394,6 +398,8 @@ fr5_lab5 = Label(fr5,bd=0, image=fr5_img_12).place(width=218, height=52, x=222, 
 
 fr5_lab6 = Label(fr5,bd=0, image=fr5_img_13).place(width=480, height=52, x=462, y=148) # label media
 
+fr5_lab7 = Label(fr5,text= 'ola', font=("Calibri", 15)).place(width=145, height=24, x=991, y=416) #Montante
+
 # Criação de botões 
 
 # Botão de guardar
@@ -412,8 +418,7 @@ fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9).place(width=115, height=42, x=1130,
 fr5_in1 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=992, y=222) #moeda a Inserir
 fr5_in2 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=140, height=24, x=992, y=287) #capital
 fr5_in3 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=990, y=348) #Tempo
-fr5_in4 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=990, y=403) #Rendimento
-fr5_in5 = Entry(fr5, bd=2, font=("Calibri", 15)).place(width=145, height=24, x=991, y=460) #Montante
+
 
 
 fr0.grid()
