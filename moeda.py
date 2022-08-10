@@ -136,6 +136,7 @@ fr2_img_6 = PhotoImage(file="imagens\\grafico.png")
 fr2_img_7 = PhotoImage(file="imagens\\moedas.png")
 fr2_img_8 = PhotoImage(file="imagens\\cotação do dia.png")
 fr2_img_9 = PhotoImage(file="imagens\\media.png")
+fr2_img_10 =  PhotoImage(file="imagens\\tela sem fundo.png")
 
 #frame 3
 fr3_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -148,6 +149,10 @@ fr3_img_7 = PhotoImage(file="imagens\\comprar.png")
 fr3_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr3_img_9 = PhotoImage(file="imagens\\confirmar.png")
 fr3_img_10 = PhotoImage(file="imagens\\grafico.png")
+fr3_img_11 = PhotoImage(file="imagens\\moedas.png")
+fr3_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
+fr3_img_13 = PhotoImage(file="imagens\\media.png")
+
 #frame 4
 fr4_img_1 = PhotoImage(file="imagens\\tela.png")
 fr4_img_2 = PhotoImage(file="imagens\\guardar.png")
@@ -158,6 +163,9 @@ fr4_img_6= PhotoImage(file="imagens\\venda.png")
 fr4_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr4_img_9 = PhotoImage(file="imagens\\confirmar.png")
 fr4_img_10 = PhotoImage(file="imagens\\grafico.png")
+fr4_img_11 = PhotoImage(file="imagens\\moedas.png")
+fr4_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
+fr4_img_13 = PhotoImage(file="imagens\\media.png")
 
 #frame 5
 fr5_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -169,6 +177,10 @@ fr5_img_6= PhotoImage(file="imagens\\moeda e investir.png")
 fr5_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr5_img_9 = PhotoImage(file="imagens\\confirmar.png")
 fr5_img_10 = PhotoImage(file="imagens\\grafico.png")
+fr5_img_11 = PhotoImage(file="imagens\\moedas.png")
+fr5_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
+fr5_img_13 = PhotoImage(file="imagens\\media.png")
+
 #frame 6
 
 
@@ -257,9 +269,11 @@ fr2_lab2 = Label(fr2, image=fr2_img_6, width=1000).place(width=950, height=470, 
 
 fr2_lab3 = Label(fr2,bd=0, image=fr2_img_7).place(width=178, height=52, x=30, y=148) # label moeda
 
-fr2_lab4 = Label(fr2,bd=0, image=fr2_img_8).place(width=212, height=52, x=229, y=148) # label cotação
+fr2_lab4 = Label(fr2,bd=0, image=fr2_img_8).place(width=218, height=52, x=222, y=148) # label cotação
 
-fr2_lab5 = Label(fr2,bd=0, image=fr2_img_9).place(width=40, height=52, x=462, y=148) # label media
+fr2_lab5 = Label(fr2,bd=0, image=fr2_img_9).place(width=480, height=52, x=462, y=148) # label media
+
+fr2_lab6 = Label(fr2, image=fr2_img_10,bd=0).place(width=310, height=470, x=970, y=130)
 # Criação de botões
 
 # Botão de guardar
@@ -286,6 +300,14 @@ fr3_lab1 = Label(fr3, image=fr3_img_6,bd=0).place(width=310, height=470, x=970, 
 fr3_lab2 = Label(fr3,bd=0, image=fr3_img_5).place(width=305, height=65, x=974, y=26)
 #tela do grafico
 fr3_lab3 = Label(fr3, image=fr3_img_10, width=1000).place(width=950, height=470, x=5, y=125) # 
+
+
+fr3_lab4 = Label(fr3,bd=0, image=fr3_img_11).place(width=178, height=52, x=30, y=148) # label moeda
+
+fr3_lab5 = Label(fr3,bd=0, image=fr3_img_12).place(width=218, height=52, x=222, y=148) # label cotação
+
+fr3_lab6 = Label(fr3,bd=0, image=fr3_img_13).place(width=480, height=52, x=462, y=148) # label media
+
 # Criação de botões 
 
 # Botão de guardar
@@ -323,6 +345,13 @@ fr4_lab2 = Label(fr4,bd=0, image=fr4_img_5).place(width=305, height=65, x=974, y
 
 #tela do grafico
 fr4_lab3 = Label(fr4, image=fr4_img_10, width=1000).place(width=950, height=470, x=5, y=125) #
+
+fr4_lab4 = Label(fr4,bd=0, image=fr4_img_11).place(width=178, height=52, x=30, y=148) # label moeda
+
+fr4_lab5 = Label(fr4,bd=0, image=fr4_img_12).place(width=218, height=52, x=222, y=148) # label cotação
+
+fr4_lab6 = Label(fr4,bd=0, image=fr4_img_13).place(width=480, height=52, x=462, y=148) # label media
+
 # Criação de botões 
 
 # Botão de guardar
@@ -358,6 +387,13 @@ fr5_lab2 = Label(fr5,bd=0, image=fr5_img_5).place(width=305, height=65, x=974, y
 
 #tela do grafico
 fr5_lab3 = Label(fr5, image=fr5_img_10, width=1000).place(width=950, height=470, x=5, y=125) #
+
+fr5_lab4 = Label(fr5,bd=0, image=fr5_img_11).place(width=178, height=52, x=30, y=148) # label moeda
+
+fr5_lab5 = Label(fr5,bd=0, image=fr5_img_12).place(width=218, height=52, x=222, y=148) # label cotação
+
+fr5_lab6 = Label(fr5,bd=0, image=fr5_img_13).place(width=480, height=52, x=462, y=148) # label media
+
 # Criação de botões 
 
 # Botão de guardar
