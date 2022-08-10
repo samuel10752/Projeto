@@ -22,7 +22,7 @@ fr2 = Frame()
 fr3 = Frame()
 fr4 = Frame()
 fr5 = Frame()
-fr6 = Frame()
+
 
 # Variáveis globais
 
@@ -133,6 +133,9 @@ fr2_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr2_img_4 = PhotoImage(file="imagens\\vender.png")
 fr2_img_5 = PhotoImage(file="imagens\\tabela.png")
 fr2_img_6 = PhotoImage(file="imagens\\grafico.png")
+fr2_img_7 = PhotoImage(file="imagens\\moedas.png")
+fr2_img_8 = PhotoImage(file="imagens\\cotação do dia.png")
+fr2_img_9 = PhotoImage(file="imagens\\media.png")
 
 #frame 3
 fr3_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -247,10 +250,17 @@ fr1_bt2 = Button(fr1, bd=0, image=fr1_img_4 , command=lambda: [fr1.grid_remove()
 # Criação de labels 
 
 fr2_lab = Label(fr2, image=fr2_img_1, width=1285).grid(row=0,column=0,sticky=W)
-fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y=26)
-fr2_lab2 = Label(fr2, image=fr2_img_6, width=1000).place(width=950, height=470, x=5, y=125) # i
 
-# Criação de botões 
+fr2_lab1 = Label(fr2,bd=0, image=fr2_img_5).place(width=305, height=65, x=974, y=26)
+
+fr2_lab2 = Label(fr2, image=fr2_img_6, width=1000).place(width=950, height=470, x=5, y=125) # grafico
+
+fr2_lab3 = Label(fr2,bd=0, image=fr2_img_7).place(width=178, height=52, x=30, y=148) # label moeda
+
+fr2_lab4 = Label(fr2,bd=0, image=fr2_img_8).place(width=212, height=52, x=229, y=148) # label cotação
+
+fr2_lab5 = Label(fr2,bd=0, image=fr2_img_9).place(width=40, height=52, x=462, y=148) # label media
+# Criação de botões
 
 # Botão de guardar
 fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
@@ -258,6 +268,7 @@ fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),
 fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de vender
 fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+
 
 
 # frame 3 # tela da Compra
