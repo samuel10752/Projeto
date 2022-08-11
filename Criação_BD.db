@@ -12,18 +12,18 @@ primary key(cpf_cnpj)
 
 create table Movimentacoes(
 id int auto_increment,
-nome_atk char(14) not null,
+nome_moeda char(14) not null,
 montante int not null,
 juros int not null,
 capital int not null,
-primary key (id, nome_atk)
+primary key (id)
 );
 
 alter table Movimentacoes
 add foreign key (nome_atk) references Usuarios(cpf_cnpj);
 
 insert into Usuarios (cpf_cnpj, nome, dataNasc, telefone) value ("123.456.789-00","Ewerson", "1993/03/17", "(035)9-9233-7155");
-insert into Movimentacoes (nome_atk, montante, juros, capital) value ("123.456.789-00", 550, 50, 600);
+insert into Movimentacoes (nome_moeda, montante, juros, capital) value ("Euro", 550, 50, 600);
 #insert into Movimentacoes (nome) value ("ABC");
 
 select * from Usuarios;
