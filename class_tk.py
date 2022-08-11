@@ -1,15 +1,28 @@
-from cProfile import label
+#CONSTRUÇÃO EWERSON
+from tkinter import messagebox
+import mysql.connector
+#Breno
 from cgitb import text
+from tkinter import messagebox
+from tkinter import *
+from class_cadastro import *
+#Samuel
 from email.mime import image
 from logging import root
 from math import fabs
 from struct import pack
 from time import time
 from tkinter import *
+#CONSTRUÇÃO EWERSON
 
 
 import tkinter as tk
 from turtle import title, width
+
+#CONSTRUÇÃO EWERSON
+#logar = Logar_sist(None)
+cadastrar = Cadastro()
+#CONSTRUÇÃO EWERSON
 
 root = Tk()
 root.title("Portal Investidor")
@@ -27,6 +40,36 @@ fr5 = Frame()
 
 
 # Variáveis globais
+
+#CONSTRUÇÃO EWERSON
+def logando():
+    mysqldb = mysql.connector.connect(host='localhost',user='root',password='q1w2e3',database='investimentos')
+    mycursor = mysqldb.cursor()
+    user = fr0_in2.get()
+    passw = fr0_in3.get()
+    sql = 'select nome, senha from Usuarios where cpf_cnpj = %s and senha = %s'
+    mycursor.execute(sql, [(user), (passw)])
+    results = mycursor.fetchall()
+    if results:
+        messagebox.showinfo('', 'login')
+        fr0.grid_remove()
+        fr2.grid()
+        root.geometry("1289x600+310+153")
+        return True
+        
+    else: 
+        messagebox.showinfo('','erro')
+
+
+def fazer_cadastro():
+    cpf_cnpj = fr1_in0.get()
+    nome = fr1_in2.get()
+    dataNasc = fr1_in3.get()
+    telefone = fr1_in4.get()
+    senha = fr1_in1.get()
+    cadastrar.cadastro(cpf_cnpj, nome, dataNasc, telefone, senha)
+#CONSTRUÇÃO EWERSON
+
 # Letras maiusculas telas 
 var1 =StringVar()
 def maiusculo(*args):
@@ -296,7 +339,6 @@ def esconder_1(*args):
     fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=23, y=425)
     fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=430)
 
-
 # Importar imagens
 
 #frame 0
@@ -369,7 +411,6 @@ fr5_img_13 = PhotoImage(file="imagens\\media.png")
 
 #frame 6
 
-
 # Criação de labels 
 
 #tela de fundo da tela de login
@@ -381,22 +422,29 @@ fr0_lab = Label(fr0, image=fr0_img_1,width=480).grid(row=0,column=0,sticky=W)
 
 #frame 0 Tela de login
 
-#entre do cpf e cnpj
+#entre do cpf e cnpj                                                                                                                                                                                                                                                                                                                                                                                                               
 fr0_in2 = Entry(fr0, bd=2, font=("Calibri", 15), justify=CENTER)
 fr0_in2.place(width=392, height=45, x=37, y=185)
 fr0_in2.bind('<KeyRelease>', cpf)
-fr0_in2.bind('<KeyRelease>', cnpj)
+#fr0_in2.bind('<KeyRelease>', cnpj)
 
-#Entre da senha  
-fr0_in3 = Entry(fr0, textvariable=hello, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=37, y=302)
+#Entre da senha
+
+#CONTRUÇÃO EWERSON
+fr0_in3 = Entry(fr0, textvariable=hello, show="*", bd=2, font=("Calibri", 15), justify=CENTER)
+fr0_in3.place(width=392, height=45, x=37, y=302)
+#CONTRUÇÃO EWERSON
 
 # Criação de botões 
 
+#CONSTRUÇÃO EWERSON
 # Botão do entrar
-fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [fr0.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")]).place(width=118, height=64, x=290, y=408)
+fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [logando()])
+fr0_bt0.place(width=118, height=64, x=290, y=408)
 
 # Botão do cadastro
 fr0_bt2 = Button(fr0, bd=0, image=fr0_img_4 , command=lambda: [fr0.grid_remove(), fr1.grid()]).place(width=174, height=64, x=63, y=408)
+#CONSTRUÇÃO EWERSON
 
 # Botão do olho
 fr0_bt3 = Button(fr0, bd=0, image=fr0_img_3, command=mostrar).place(width=45, height=45, x=436, y=302)
@@ -415,10 +463,11 @@ fr1_lab2 = Label(fr1, image=fr1_img_2,width=480).grid(row=0,column=0)
 fr1_in0 = Entry(fr1, bd=2, font=("Calibri", 15), justify=CENTER)
 fr1_in0.place(width=392, height=45, x=20, y=130)
 fr1_in0.bind('<KeyRelease>', cpf_1)
-fr1_in0.bind('<KeyRelease>', cnpj_1)
+#fr1_in0.bind('<KeyRelease>', cnpj_1)
 
 #Entre da senha  
-fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER).place(width=392, height=45, x=23, y=425)
+fr1_in1 = Entry(fr1, textvariable=hello_1, show="*", bd=2, font=("Calibri", 15), justify=CENTER)
+fr1_in1.place(width=392, height=45, x=23, y=425)
 
 
 #Entre do Nome
@@ -440,7 +489,8 @@ fr1_in4.bind('<KeyRelease>', telefone_cadastro)
 
 
 # Botão do Cadastrar
-fr1_bt0 = Button(fr1, bd=0, image=fr1_img_1, command=lambda: [fr1.grid_remove(), fr0.grid()]).place(width=173, height=64, x=265, y=488) #Cadastrar
+fr1_bt0 = Button(fr1, bd=0, image=fr1_img_1, command=lambda: [fazer_cadastro(),fr1.grid_remove(), fr0.grid()])
+fr1_bt0.place(width=173, height=64, x=265, y=488) #Cadastrar
 
 # Botão do olho
 fr1_bt3 = Button(fr1, bd=0, image=fr1_img_3, command=mostrar_1).place(width=45, height=40, x=430, y=430) #Olho
@@ -465,7 +515,28 @@ fr2_lab4 = Label(fr2,bd=0, image=fr2_img_8).place(width=218, height=52, x=222, y
 
 fr2_lab5 = Label(fr2,bd=0, image=fr2_img_9).place(width=480, height=52, x=462, y=148) # label media
 
-fr2_lab6 = Label(fr2, image=fr2_img_10,bd=0).place(width=310, height=470, x=970, y=130)
+fr2_lab6 = Label(fr2, image=fr2_img_10,bd=0).place(width=310, height=470, x=970, y=130) #label de 
+
+fr2_lab7 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+
+fr2_lab8 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+
+fr2_lab9 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+
+fr2_lab10 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+
+fr2_lab11 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+
+fr2_lab12 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+
+fr2_lab13 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+
+fr2_lab14 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+
+fr2_lab15 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+
+fr2_lab16 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+
 # Criação de botões
 
 # Botão de guardar
@@ -501,6 +572,26 @@ fr3_lab5 = Label(fr3,bd=0, image=fr3_img_12).place(width=218, height=52, x=222, 
 fr3_lab6 = Label(fr3,bd=0, image=fr3_img_13).place(width=480, height=52, x=462, y=148) # label media
 
 fr3_lab7 = Label(fr3, text='ola', font=("Calibri", 15)).place(width=145, height=24, x=995, y=400) #Montante
+
+fr3_lab8 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+
+fr3_lab9 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+
+fr3_lab10 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+
+fr3_lab11 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+
+fr3_lab12 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+
+fr3_lab13 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+
+fr3_lab14 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+
+fr3_lab15 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+
+fr3_lab16 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+
+fr3_lab17 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
 
 # Criação de botões 
 
@@ -551,6 +642,27 @@ fr4_lab5 = Label(fr4,bd=0, image=fr4_img_12).place(width=218, height=52, x=222, 
 fr4_lab6 = Label(fr4,bd=0, image=fr4_img_13).place(width=480, height=52, x=462, y=148) # label media
 
 fr4_lab7 = Label(fr4,text='ola', font=("Calibri", 15)).place(width=145, height=24, x=993, y=454) #Montante
+
+fr4_lab8 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+
+fr4_lab9 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+
+fr4_lab10 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+
+fr4_lab11 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+
+fr4_lab12 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+
+fr4_lab13 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+
+fr4_lab14 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+
+fr4_lab15 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+
+fr4_lab16 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+
+fr4_lab17 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+
 
 # Criação de botões 
 
@@ -603,6 +715,27 @@ fr5_lab6 = Label(fr5,bd=0, image=fr5_img_13).place(width=480, height=52, x=462, 
 
 fr5_lab7 = Label(fr5,text= 'ola', font=("Calibri", 15)).place(width=145, height=24, x=991, y=416) #Montante
 
+fr5_lab8 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+
+fr5_lab9 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+
+fr5_lab10 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+
+fr5_lab11 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+
+fr5_lab12 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+
+fr5_lab13 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+
+fr5_lab14 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+
+fr5_lab15 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+
+fr5_lab16 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+
+fr5_lab17 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+
+
 # Criação de botões 
 
 # Botão de guardar
@@ -626,7 +759,6 @@ fr5_in3 = Entry(fr5, bd=2, font=("Calibri", 15))
 fr5_in3.place(width=145, height=24, x=990, y=348) 
 fr5_in3.bind("<KeyRelease>",guarda_tempo)#Tempo
 
-
-
+# Rodar o programa
 fr0.grid()
 root.mainloop()
