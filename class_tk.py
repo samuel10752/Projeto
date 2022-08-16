@@ -14,6 +14,7 @@ from math import fabs
 from struct import pack
 from time import time
 from tkinter import *
+from cpfcnpj import*
 #CONSTRUÇÃO EWERSON
 
 
@@ -41,6 +42,42 @@ fr5 = Frame()
 
 
 # Variáveis globais
+
+#def isCPFValido(cpf, d1=0, d2=0, i=0):
+#    if cpf is not None:
+#        if len(cpf) > 11:
+#            return False
+#        while i < 10:
+#            d1, d2, i = (d1 + (int(cpf[i]) * (11 - i - 1))) % 11 if i < 9 else d1, (
+#            d2 + (int(cpf[i]) * (11 - i))) % 11, i + 1
+#        return (int(cpf[9]) == (11 - d1 if d1 > 1 else 0)) and (int(cpf[10]) == (11 - d2 if d2 > 1 else 0))
+#    else:
+#        return False
+#
+#
+#def validar_cnpj(cnpj):
+#  if not isinstance(cnpj, basestring):
+#    cnpj = str(cnpj)
+#  cnpj = format_cnpj(cnpj)
+#  cnpj = ''.join(re.findall('\d', cnpj))
+#  if (not cnpj) or (len(cnpj) < 14):
+#    return False
+#  # Pega apenas os 12 primeiros dígitos do CNPJ e gera os 2 dígitos que faltam
+#  inteiros = map(int, cnpj)
+#  novo = inteiros[:12]
+#  prod = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+#  while len(novo) < 14:
+#    r = sum([x*y for (x, y) in zip(novo, prod)]) % 11
+#    if r > 1:
+#      f = 11 - r
+#    else:
+#      f = 0
+#    novo.append(f)
+#    prod.insert(0, 6)
+#  # Se o número gerado coincidir com o número original, é válido
+#  if novo == inteiros:
+#    return cnpj
+#  return False
 
 #CONSTRUÇÃO EWERSON
 def logando():
