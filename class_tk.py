@@ -29,7 +29,7 @@ root = Tk()
 root.title("Portal Investidor")
 root.resizable(height = False, width = False)
 root.geometry("484x560+800+155")
-root.iconbitmap(default="Projeto\\icones\\ico.ico")
+root.iconbitmap(default="icones\\ico.ico")
 
 
 fr0 = Frame()
@@ -98,6 +98,26 @@ var5 =StringVar()
 def maiusculo(*args):
     var5.set(var5.get().title())
 var5.trace("w", maiusculo)
+
+#limpar o Label do montante na tela comprar
+def clear_1():
+    fr3_lab7['text'] =''
+    fr3_in1[''] =''
+    fr3_in2[''] =''
+    fr3_in3[''] =''
+#limpar o entre da moeda na tela comprar
+   
+
+#def clean(self):
+#        fr3_bt4 = self.fr3_bt4
+#        cc_myself = fr3_bt4.get("cc_myself")
+#        subject = fr3_bt4.get("subject")
+#
+#        if cc_myself and subject:
+#            # Somente faça algo se amgos os campos forem válidos.
+#            if "help" not in subject:
+#                raise forms.ValidationError("Did not send for 'help' in "
+#                        "the subject despite CC'ing yourself.")
 
 # Entre do nome cadastro    
 def nome(event=None):
@@ -188,25 +208,25 @@ def telefone_cadastro(event=None):
 
 #tela do capital tempo
 def compra_tempo(event=None):
-    x=fr3_in4.get()
+    x=fr3_in3.get()
     y=''
     if event.keysym.lower() == "backspace": return
     for i in range(len(x)):
         if x[i] in '0123456789':
             y+=x[i]
-    fr3_in4.delete(0, 'end')
-    fr3_in4.insert(0, y)
+    fr3_in3.delete(0, 'end')
+    fr3_in3.insert(0, y)
 
 #venda moeda investi
 def venda_moedacompra(event=None):
-    x=fr3_in4.get()
+    x=fr3_in3.get()
     y=''
     if event.keysym.lower() == "backspace": return
     for i in range(len(x)):
         if x[i] in '0123456789':
             y+=x[i]
-    fr3_in4.delete(0, 'end')
-    fr3_in4.insert(0, y)
+    fr3_in3.delete(0, 'end')
+    fr3_in3.insert(0, y)
 
 
 #venda moeda comprar
@@ -464,7 +484,7 @@ def escolha_dolar2():
     nome_atk = user
     nome_moeda = fr3_in1.get()
     capital = float(fr3_in2.get())
-    meses = int(fr3_in4.get())
+    meses = int(fr3_in3.get())
     cotar.dolar2(meses)
     montante = cotar.md + capital 
     cadastrar.cadastro_movimentacao(id, nome_atk, nome_moeda, capital, meses, montante)
@@ -515,73 +535,73 @@ fr0_img_3 = PhotoImage(file="imagens\\olho.png")
 fr0_img_2 = PhotoImage(file="imagens\\entrar.png")
 fr0_img_4 = PhotoImage(file="imagens\\cadastro.png")
 
-fr0_img_1 = PhotoImage(file="Projeto\\imagens\\fundo.png")
-fr0_img_3 = PhotoImage(file="Projeto\\imagens\\olho.png")
-fr0_img_2 = PhotoImage(file="Projeto\\imagens\\entrar.png")
-fr0_img_4 = PhotoImage(file="Projeto\\imagens\\cadastro.png")
+fr0_img_1 = PhotoImage(file="imagens\\fundo.png")
+fr0_img_3 = PhotoImage(file="imagens\\olho.png")
+fr0_img_2 = PhotoImage(file="imagens\\entrar.png")
+fr0_img_4 = PhotoImage(file="imagens\\cadastro.png")
 
 
 #frame 1
-fr1_img_1 = PhotoImage(file="Projeto\\imagens\\cadastrar.png")
-fr1_img_2 = PhotoImage(file="Projeto\\imagens\\fundo2.png")
-fr1_img_3 = PhotoImage(file="Projeto\\imagens\\olho.png")
-fr1_img_4 = PhotoImage(file="Projeto\\imagens\\voltar.png")
-fr1_img_5 = PhotoImage(file="Projeto\\imagens\\olho.png")
+fr1_img_1 = PhotoImage(file="imagens\\cadastrar.png")
+fr1_img_2 = PhotoImage(file="imagens\\fundo2.png")
+fr1_img_3 = PhotoImage(file="imagens\\olho.png")
+fr1_img_4 = PhotoImage(file="imagens\\voltar.png")
+fr1_img_5 = PhotoImage(file="imagens\\olho.png")
 
 #frame 2
-fr2_img_1 = PhotoImage(file="Projeto\\imagens\\tela.png")
-fr2_img_2 = PhotoImage(file="Projeto\\imagens\\guardar.png")
-fr2_img_3 = PhotoImage(file="Projeto\\imagens\\comprar.png")
-fr2_img_4 = PhotoImage(file="Projeto\\imagens\\vender.png")
-fr2_img_5 = PhotoImage(file="Projeto\\imagens\\tabela.png")
-fr2_img_6 = PhotoImage(file="Projeto\\imagens\\grafico.png")
-fr2_img_7 = PhotoImage(file="Projeto\\imagens\\moedas.png")
-fr2_img_8 = PhotoImage(file="Projeto\\imagens\\cotação do dia.png")
-fr2_img_9 = PhotoImage(file="Projeto\\imagens\\media.png")
-fr2_img_10 =  PhotoImage(file="Projeto\\imagens\\tela sem fundo.png")
+fr2_img_1 = PhotoImage(file="imagens\\tela.png")
+fr2_img_2 = PhotoImage(file="imagens\\guardar.png")
+fr2_img_3 = PhotoImage(file="imagens\\comprar.png")
+fr2_img_4 = PhotoImage(file="imagens\\vender.png")
+fr2_img_5 = PhotoImage(file="imagens\\tabela.png")
+fr2_img_6 = PhotoImage(file="imagens\\grafico.png")
+fr2_img_7 = PhotoImage(file="imagens\\moedas.png")
+fr2_img_8 = PhotoImage(file="imagens\\cotação do dia.png")
+fr2_img_9 = PhotoImage(file="imagens\\media.png")
+fr2_img_10 =  PhotoImage(file="imagens\\tela sem fundo.png")
 
 #frame 3
-fr3_img_1 = PhotoImage(file="Projeto\\imagens\\tela.png")
-fr3_img_2 = PhotoImage(file="Projeto\\imagens\\guardar.png")
-fr3_img_3 = PhotoImage(file="Projeto\\imagens\\comprar.png")
-fr3_img_4 = PhotoImage(file="Projeto\\imagens\\vender.png")
-fr3_img_5 = PhotoImage(file="Projeto\\imagens\\tabela.png")
-fr3_img_6 = PhotoImage(file="Projeto\\imagens\\compra.png")
-fr3_img_7 = PhotoImage(file="Projeto\\imagens\\comprar.png")
-fr3_img_8 = PhotoImage(file="Projeto\\imagens\\limpa.png")
-fr3_img_9 = PhotoImage(file="Projeto\\imagens\\confirmar.png")
-fr3_img_10 = PhotoImage(file="Projeto\\imagens\\grafico.png")
-fr3_img_11 = PhotoImage(file="Projeto\\imagens\\moedas.png")
-fr3_img_12 = PhotoImage(file="Projeto\\imagens\\cotação do dia.png")
-fr3_img_13 = PhotoImage(file="Projeto\\imagens\\media.png")
+fr3_img_1 = PhotoImage(file="imagens\\tela.png")
+fr3_img_2 = PhotoImage(file="imagens\\guardar.png")
+fr3_img_3 = PhotoImage(file="imagens\\comprar.png")
+fr3_img_4 = PhotoImage(file="imagens\\vender.png")
+fr3_img_5 = PhotoImage(file="imagens\\tabela.png")
+fr3_img_6 = PhotoImage(file="imagens\\compra.png")
+fr3_img_7 = PhotoImage(file="imagens\\comprar.png")
+fr3_img_8 = PhotoImage(file="imagens\\limpa.png")
+fr3_img_9 = PhotoImage(file="imagens\\confirmar.png")
+fr3_img_10 = PhotoImage(file="imagens\\grafico.png")
+fr3_img_11 = PhotoImage(file="imagens\\moedas.png")
+fr3_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
+fr3_img_13 = PhotoImage(file="imagens\\media.png")
 
 #frame 4
-fr4_img_1 = PhotoImage(file="Projeto\\imagens\\tela.png")
-fr4_img_2 = PhotoImage(file="Projeto\\imagens\\guardar.png")
-fr4_img_3 = PhotoImage(file="Projeto\\imagens\\comprar.png")
-fr4_img_4 = PhotoImage(file="Projeto\\imagens\\vender.png")
-fr4_img_5 = PhotoImage(file="Projeto\\imagens\\tabela.png")
-fr4_img_6= PhotoImage(file="Projeto\\imagens\\venda.png")
-fr4_img_8 = PhotoImage(file="Projeto\\imagens\\limpa.png")
-fr4_img_9 = PhotoImage(file="Projeto\\imagens\\confirmar.png")
-fr4_img_10 = PhotoImage(file="Projeto\\imagens\\grafico.png")
-fr4_img_11 = PhotoImage(file="Projeto\\imagens\\moedas.png")
-fr4_img_12 = PhotoImage(file="Projeto\\imagens\\cotação do dia.png")
-fr4_img_13 = PhotoImage(file="Projeto\\imagens\\media.png")
+fr4_img_1 = PhotoImage(file="imagens\\tela.png")
+fr4_img_2 = PhotoImage(file="imagens\\guardar.png")
+fr4_img_3 = PhotoImage(file="imagens\\comprar.png")
+fr4_img_4 = PhotoImage(file="imagens\\vender.png")
+fr4_img_5 = PhotoImage(file="imagens\\tabela.png")
+fr4_img_6= PhotoImage(file="imagens\\venda.png")
+fr4_img_8 = PhotoImage(file="imagens\\limpa.png")
+fr4_img_9 = PhotoImage(file="imagens\\confirmar.png")
+fr4_img_10 = PhotoImage(file="imagens\\grafico.png")
+fr4_img_11 = PhotoImage(file="imagens\\moedas.png")
+fr4_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
+fr4_img_13 = PhotoImage(file="imagens\\media.png")
 
 #frame 5
-fr5_img_1 = PhotoImage(file="Projeto\\imagens\\tela.png")
-fr5_img_2 = PhotoImage(file="Projeto\\imagens\\guardar.png")
-fr5_img_3 = PhotoImage(file="Projeto\\imagens\\comprar.png")
-fr5_img_4 = PhotoImage(file="Projeto\\imagens\\vender.png")
-fr5_img_5 = PhotoImage(file="Projeto\\imagens\\tabela.png")
-fr5_img_6= PhotoImage(file="Projeto\\imagens\\moeda e investir.png")
-fr5_img_8 = PhotoImage(file="Projeto\\imagens\\limpa.png")
-fr5_img_9 = PhotoImage(file="Projeto\\imagens\\confirmar.png")
-fr5_img_10 = PhotoImage(file="Projeto\\imagens\\grafico.png")
-fr5_img_11 = PhotoImage(file="Projeto\\imagens\\moedas.png")
-fr5_img_12 = PhotoImage(file="Projeto\\imagens\\cotação do dia.png")
-fr5_img_13 = PhotoImage(file="Projeto\\imagens\\media.png")
+fr5_img_1 = PhotoImage(file="imagens\\tela.png")
+fr5_img_2 = PhotoImage(file="imagens\\guardar.png")
+fr5_img_3 = PhotoImage(file="imagens\\comprar.png")
+fr5_img_4 = PhotoImage(file="imagens\\vender.png")
+fr5_img_5 = PhotoImage(file="imagens\\tabela.png")
+fr5_img_6= PhotoImage(file="imagens\\moeda e investir.png")
+fr5_img_8 = PhotoImage(file="imagens\\limpa.png")
+fr5_img_9 = PhotoImage(file="imagens\\confirmar.png")
+fr5_img_10 = PhotoImage(file="imagens\\grafico.png")
+fr5_img_11 = PhotoImage(file="imagens\\moedas.png")
+fr5_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
+fr5_img_13 = PhotoImage(file="imagens\\media.png")
 
 #frame 6
 
@@ -799,9 +819,12 @@ fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3, command= lambda:[fr3.grid_remove(),
 # Botão de vender
 fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 # Botão de limpar
-fr3_bt4 = Button(fr3, bd=0, image=fr3_img_8).place(width=115, height=42, x=996, y=503)
+fr3_bt4 = Button(fr3, bd=0, image=fr3_img_8, command=lambda: [clear_1()])
+fr3_bt4.place(width=115, height=42, x=996, y=503)
+
 #  botão de Confirmar
-fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9, command=lambda: [escolha_dolar2()]).place(width=115, height=42, x=1137, y=504)
+fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9, command=lambda: [escolha_dolar2()])
+fr3_bt5.place(width=115, height=42, x=1137, y=504)
 
 
 
@@ -809,16 +832,13 @@ fr3_in1 = Entry(fr3, bd=2,textvariable=var1, font=("Calibri", 15))
 fr3_in1.place(width=140, height=24, x=995, y=200) 
 fr3_in1.bind("<KeyRelease>",moeda_comprar)   #moeda
 
-fr3_in1.place(width=140, height=24, x=995, y=200) #moeda
-
-
 fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15))
 fr3_in2.place(width=140, height=24, x=995, y=265) #capital
 fr3_in2.bind("<KeyRelease>", comprar_capital) #capital
 
-fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15))
-fr3_in4.place(width=145, height=24, x=995, y=325) #Tempo
-fr3_in4.bind("<KeyRelease>", compra_tempo) #Tempo
+fr3_in3 = Entry(fr3, bd=2, font=("Calibri", 15))
+fr3_in3.place(width=145, height=24, x=995, y=325) #Tempo
+fr3_in3.bind("<KeyRelease>", compra_tempo) #Tempo
 
 
 # frame 4 # tela da Venda
