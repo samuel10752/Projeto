@@ -28,3 +28,15 @@ class Cadastro:
             self.mycursor.execute(comando_sql)
             self.conexao.commit()
             messagebox.showinfo('', 'User foi cadastrado')
+    
+    def cadastro_movimentacao(self, id, nome_atk, nome_moeda, capital, meses, montante):
+        self.id = id
+        self.nome_atk = nome_atk
+        self.nome_moeda = nome_moeda
+        self.capital = capital 
+        self.meses = meses
+        self.montante = montante
+        comando_sql = f'insert into Movimentacoes (id, nome_atk, nome_moeda, capital, meses, montante) value ("{self.id}", "{self.nome_atk}", "{self.nome_moeda}", "{self.capital}", "{self.meses}", "{self.montante}")'
+        self.mycursor.execute(comando_sql)
+        self.conexao.commit()
+        messagebox.showinfo('', 'Movimentação foi cadastrada')

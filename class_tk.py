@@ -6,6 +6,7 @@ from cgitb import text
 from tkinter import messagebox
 from tkinter import *
 from class_cadastro import *
+from class_cotacao import*
 #Samuel
 from email.mime import image
 from logging import root
@@ -20,7 +21,7 @@ import tkinter as tk
 from turtle import title, width
 
 #CONSTRUÇÃO EWERSON
-#logar = Logar_sist(None)
+cotar = Cotacao()
 cadastrar = Cadastro()
 #CONSTRUÇÃO EWERSON
 
@@ -45,6 +46,7 @@ fr5 = Frame()
 def logando():
     mysqldb = mysql.connector.connect(host='localhost',user='root',password='q1w2e3',database='investimentos')
     mycursor = mysqldb.cursor()
+    global user
     user = fr0_in2.get()
     passw = fr0_in3.get()
     sql = 'select nome, senha from Usuarios where cpf_cnpj = %s and senha = %s'
@@ -97,6 +99,7 @@ def maiusculo(*args):
     var5.set(var5.get().title())
 var5.trace("w", maiusculo)
 
+# Entre do nome cadastro    
 def nome(event=None):
     x=fr1_in2.get()
     y=''
@@ -107,8 +110,51 @@ def nome(event=None):
     fr1_in2.delete(0, 'end')
     fr1_in2.insert(0, y)
 
-#Data de nascimento
+#entre da moeda da comprar
+def moeda_comprar(event=None):
+    x=fr3_in1.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] not in '0123456789':
+            y+=x[i]
+    fr3_in1.delete(0, 'end')
+    fr3_in1.insert(0, y)    
 
+# entre da moeda do vender
+def moeda_vender(event=None):
+    x=fr4_in1.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] not in '0123456789':
+            y+=x[i]
+    fr4_in1.delete(0, 'end')
+    fr4_in1.insert(0, y)      
+
+# entre da moeda a comprar na tela vender
+def moeda_comprar1(event=None):
+    x=fr4_in3.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] not in '0123456789':
+            y+=x[i]
+    fr4_in3.delete(0, 'end')
+    fr4_in3.insert(0, y)       
+
+# entre da moeda na tela guardar
+def moeda_guardar(event=None):
+    x=fr5_in1.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] not in '0123456789':
+            y+=x[i]
+    fr5_in1.delete(0, 'end')
+    fr5_in1.insert(0, y)        
+
+#Data de nascimento
 def data_nasc(event=None):
     x=fr1_in3.get().replace('/','')[:8]
     y=''
@@ -320,6 +366,127 @@ def cnpj_1(event=None):
             fr1_in0.delete(0, 'end')
             fr1_in0.insert(0, y)
 
+#Chamando cotação de todas as moedas
+def chama_cotacao():
+    cotar.dolar() 
+    fr2_lab7['text']=cotar.d
+    cotar.euro()
+    fr2_lab8['text']=cotar.e
+    cotar.libra()
+    fr2_lab9['text']=cotar.l
+    cotar.bitcoin()
+    fr2_lab10['text']=cotar.b
+    cotar.ethereum()
+    fr2_lab11['text']=cotar.et
+
+    #cotar.dolar() 
+    fr3_lab8['text']=cotar.d
+    #cotar.euro()
+    fr3_lab9['text']=cotar.e
+    #cotar.libra()
+    fr3_lab10['text']=cotar.l
+    #cotar.bitcoin()
+    fr3_lab11['text']=cotar.b
+    #cotar.ethereum()
+    fr3_lab12['text']=cotar.et
+
+    #cotar.dolar()
+    fr4_lab8['text']=cotar.d
+    #cotar.euro()
+    fr4_lab9['text']=cotar.e
+    #cotar.libra()
+    fr4_lab10['text']=cotar.l
+    #cotar.bitcoin()
+    fr4_lab11['text']=cotar.b
+    #cotar.ethereum()
+    fr4_lab12['text']=cotar.et
+
+    #cotar.dolar()
+    fr5_lab8['text']=cotar.d
+    #cotar.euro()
+    fr5_lab9['text']=cotar.e
+    #cotar.libra()
+    fr5_lab10['text']=cotar.l
+    #cotar.bitcoin()
+    fr5_lab11['text']=cotar.b
+    #cotar.ethereum()
+    fr5_lab12['text']=cotar.et
+
+#Chama todas as médias das moedas nos últimos 3 meses, dentro dos label's
+def chama_media():
+    cotar.dolar1()
+    fr2_lab12['text']=cotar.d3
+    print(cotar.d3)
+    cotar.euro1()
+    fr2_lab13['text']=cotar.e3
+    cotar.libra1()
+    fr2_lab14['text']=cotar.l3
+    cotar.bitcoin1()
+    fr2_lab15['text']=cotar.b3
+    cotar.ethereum1()
+    fr2_lab16['text']=cotar.et3
+
+    #cotar.dolar() 
+    fr3_lab13['text']=cotar.d3
+    #cotar.euro()
+    fr3_lab14['text']=cotar.e3
+    #cotar.libra()
+    fr3_lab15['text']=cotar.l3
+    #cotar.bitcoin()
+    fr3_lab16['text']=cotar.b3
+    #cotar.ethereum()
+    fr3_lab17['text']=cotar.et3
+
+    #cotar.dolar()
+    fr4_lab13['text']=cotar.d3
+    #cotar.euro()
+    fr4_lab14['text']=cotar.e3
+    #cotar.libra()
+    fr4_lab15['text']=cotar.l3
+    #cotar.bitcoin()
+    fr4_lab16['text']=cotar.b3
+    #cotar.ethereum()
+    fr4_lab17['text']=cotar.et3
+
+    #cotar.dolar()
+    fr5_lab13['text']=cotar.d3
+    #cotar.euro()
+    fr5_lab14['text']=cotar.e3
+    #cotar.libra()
+    fr5_lab15['text']=cotar.l3
+    #cotar.bitcoin()
+    fr5_lab16['text']=cotar.b3
+    #cotar.ethereum()
+    fr5_lab17['text']=cotar.et3
+
+def escolha_dolar2():
+    id = None
+    nome_atk = user
+    nome_moeda = fr3_in1.get()
+    capital = float(fr3_in2.get())
+    meses = int(fr3_in4.get())
+    cotar.dolar2(meses)
+    montante = cotar.md + capital 
+    cadastrar.cadastro_movimentacao(id, nome_atk, nome_moeda, capital, meses, montante)
+    fr3_lab7['text']=str(montante)
+
+
+#def escolha_euro2():
+#    meses = fr3_in4.get()
+#    cotar.euro2(meses)
+#    fr2_lab13['text']=cotar.e3
+#def escolha_libra2():
+#    meses = 
+#    cotar.libra2(meses)
+#    fr2_lab14['text']=cotar.l3
+#def escolha_bitcoin2():
+#    meses = 
+#    cotar.bitcoin2(meses)
+#    fr2_lab15['text']=cotar.b3
+#def escolha_ethereum2():
+#    meses = 
+#    cotar.ethereum1(meses)
+#    fr2_lab16['text']=cotar.et3
 
 hello = StringVar()
 def mostrar(*args):
@@ -343,8 +510,8 @@ def esconder_1(*args):
 
 #frame 0
 fr0_img_1 = PhotoImage(file="imagens\\fundo.png")
-fr0_img_2 = PhotoImage(file="imagens\\entrar.png")
 fr0_img_3 = PhotoImage(file="imagens\\olho.png")
+fr0_img_2 = PhotoImage(file="imagens\\entrar.png")
 fr0_img_4 = PhotoImage(file="imagens\\cadastro.png")
 
 #frame 1
@@ -439,7 +606,7 @@ fr0_in3.place(width=392, height=45, x=37, y=302)
 
 #CONSTRUÇÃO EWERSON
 # Botão do entrar
-fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [logando()])
+fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [logando(), chama_cotacao(), chama_media()])
 fr0_bt0.place(width=118, height=64, x=290, y=408)
 
 # Botão do cadastro
@@ -515,27 +682,38 @@ fr2_lab4 = Label(fr2,bd=0, image=fr2_img_8).place(width=218, height=52, x=222, y
 
 fr2_lab5 = Label(fr2,bd=0, image=fr2_img_9).place(width=480, height=52, x=462, y=148) # label media
 
-fr2_lab6 = Label(fr2, image=fr2_img_10,bd=0).place(width=310, height=470, x=970, y=130) #label de 
+fr2_lab6 = Label(fr2, image=fr2_img_10,bd=0).place(width=310, height=470, x=970, y=130)
 
-fr2_lab7 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+fr2_lab7 = Label(fr2, text='',bd=0)
+fr2_lab7.place(width=200, height=40, x=230, y=225) #label do USD
 
-fr2_lab8 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+fr2_lab8 = Label(fr2, text='',bd=0)
+fr2_lab8.place(width=200, height=40, x=230, y=307) #label do EURO
 
-fr2_lab9 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+fr2_lab9 = Label(fr2, text='',bd=0)
+fr2_lab9.place(width=200, height=40, x=230, y=380) #label do Libra
 
-fr2_lab10 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+fr2_lab10 = Label(fr2, text='',bd=0)
+fr2_lab10.place(width=200, height=40, x=230, y=460) #label do Bitcoin
 
-fr2_lab11 = Label(fr2, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+fr2_lab11 = Label(fr2, text='',bd=0)
+fr2_lab11.place(width=200, height=40, x=230, y=535) #label do Ethereum
 
-fr2_lab12 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+fr2_lab12 = Label(fr2, text='',bd=0)
+fr2_lab12.place(width=465, height=40, x=470, y=225) #label do USD Média
 
-fr2_lab13 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+fr2_lab13 = Label(fr2, text='',bd=0)
+fr2_lab13.place(width=465, height=40, x=470, y=307) #label do Euro Média
 
-fr2_lab14 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+fr2_lab14 = Label(fr2, text='',bd=0)
+fr2_lab14.place(width=465, height=40, x=470, y=380) #label do Libra Média
 
-fr2_lab15 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+fr2_lab15 = Label(fr2, text='',bd=0)
+fr2_lab15.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
 
-fr2_lab16 = Label(fr2, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+fr2_lab16 = Label(fr2, text='',bd=0)
+fr2_lab16.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+
 
 # Criação de botões
 
@@ -556,7 +734,7 @@ fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),
 # tela do Investidor de Compra
 fr3_lab = Label(fr3, image=fr3_img_1, width=1285).grid(row=0,column=0,sticky=W)
 
-# imahem compra
+# imagem compra
 fr3_lab1 = Label(fr3, image=fr3_img_6,bd=0).place(width=310, height=470, x=970, y=130)
 
 # image tabela
@@ -571,27 +749,39 @@ fr3_lab5 = Label(fr3,bd=0, image=fr3_img_12).place(width=218, height=52, x=222, 
 
 fr3_lab6 = Label(fr3,bd=0, image=fr3_img_13).place(width=480, height=52, x=462, y=148) # label media
 
-fr3_lab7 = Label(fr3, text='ola', font=("Calibri", 15)).place(width=145, height=24, x=995, y=400) #Montante
+fr3_lab7 = Label(fr3, text='ola', font=("Calibri", 15))
+fr3_lab7.place(width=145, height=24, x=995, y=400) #Montante
 
-fr3_lab8 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+fr3_lab8 = Label(fr3, text='',bd=0)
+fr3_lab8.place(width=200, height=40, x=230, y=225) #label do USD
 
-fr3_lab9 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+fr3_lab9 = Label(fr3, text='',bd=0)
+fr3_lab9.place(width=200, height=40, x=230, y=307) #label do EURO
 
-fr3_lab10 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+fr3_lab10 = Label(fr3, text='',bd=0)
+fr3_lab10.place(width=200, height=40, x=230, y=380) #label do Libra
 
-fr3_lab11 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+fr3_lab11 = Label(fr3, text='',bd=0)
+fr3_lab11.place(width=200, height=40, x=230, y=460) #label do Bitcoin
 
-fr3_lab12 = Label(fr3, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+fr3_lab12 = Label(fr3, text='',bd=0)
+fr3_lab12.place(width=200, height=40, x=230, y=535) #label do Ethereum
 
-fr3_lab13 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+fr3_lab13 = Label(fr3, text='',bd=0)
+fr3_lab13.place(width=465, height=40, x=470, y=225) #label do USD Média
 
-fr3_lab14 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+fr3_lab14 = Label(fr3, text='',bd=0)
+fr3_lab14.place(width=465, height=40, x=470, y=307) #label do Euro Média
 
-fr3_lab15 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+fr3_lab15 = Label(fr3, text='',bd=0)
+fr3_lab15.place(width=465, height=40, x=470, y=380) #label do Libra Média
 
-fr3_lab16 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+fr3_lab16 = Label(fr3, text='',bd=0)
+fr3_lab16.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
 
-fr3_lab17 = Label(fr3, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+fr3_lab17 = Label(fr3, text='',bd=0)
+fr3_lab17.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+
 
 # Criação de botões 
 
@@ -604,11 +794,13 @@ fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),
 # Botão de limpar
 fr3_bt4 = Button(fr3, bd=0, image=fr3_img_8).place(width=115, height=42, x=996, y=503)
 #  botão de Confirmar
-fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9).place(width=115, height=42, x=1137, y=504)
+fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9, command=lambda: [escolha_dolar2()]).place(width=115, height=42, x=1137, y=504)
 
 
 
-fr3_in1 = Entry(fr3, bd=2,textvariable=var1, font=("Calibri", 15)).place(width=140, height=24, x=995, y=200) #moeda
+fr3_in1 = Entry(fr3, bd=2,textvariable=var1, font=("Calibri", 15))
+fr3_in1.place(width=140, height=24, x=995, y=200) 
+fr3_in1.bind("<KeyRelease>",moeda_comprar)   #moeda
 
 fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15))
 fr3_in2.place(width=140, height=24, x=995, y=265) #capital
@@ -616,7 +808,7 @@ fr3_in2.bind("<KeyRelease>", comprar_capital) #capital
 
 fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15))
 fr3_in4.place(width=145, height=24, x=995, y=325) #Tempo
-fr3_in4.bind("<KeyRelease>", compra_tempo) #capital
+fr3_in4.bind("<KeyRelease>", compra_tempo) #Tempo
 
 
 # frame 4 # tela da Venda
@@ -643,25 +835,35 @@ fr4_lab6 = Label(fr4,bd=0, image=fr4_img_13).place(width=480, height=52, x=462, 
 
 fr4_lab7 = Label(fr4,text='ola', font=("Calibri", 15)).place(width=145, height=24, x=993, y=454) #Montante
 
-fr4_lab8 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+fr4_lab8 = Label(fr4, text='',bd=0)
+fr4_lab8.place(width=200, height=40, x=230, y=225) #label do USD
 
-fr4_lab9 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+fr4_lab9 = Label(fr4, text='',bd=0)
+fr4_lab9.place(width=200, height=40, x=230, y=307) #label do EURO
 
-fr4_lab10 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+fr4_lab10 = Label(fr4, text='',bd=0)
+fr4_lab10.place(width=200, height=40, x=230, y=380) #label do Libra
 
-fr4_lab11 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+fr4_lab11 = Label(fr4, text='',bd=0)
+fr4_lab11.place(width=200, height=40, x=230, y=460) #label do Bitcoin
 
-fr4_lab12 = Label(fr4, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+fr4_lab12 = Label(fr4, text='',bd=0)
+fr4_lab12.place(width=200, height=40, x=230, y=535) #label do Ethereum
 
-fr4_lab13 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+fr4_lab13 = Label(fr4, text='',bd=0)
+fr4_lab13.place(width=465, height=40, x=470, y=225) #label do USD Média
 
-fr4_lab14 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+fr4_lab14 = Label(fr4, text='',bd=0)
+fr4_lab14.place(width=465, height=40, x=470, y=307) #label do Euro Média
 
-fr4_lab15 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+fr4_lab15 = Label(fr4, text='',bd=0)
+fr4_lab15.place(width=465, height=40, x=470, y=380) #label do Libra Média
 
-fr4_lab16 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+fr4_lab16 = Label(fr4, text='',bd=0)
+fr4_lab16.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
 
-fr4_lab17 = Label(fr4, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+fr4_lab17 = Label(fr4, text='',bd=0)
+fr4_lab17.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
 
 
 # Criação de botões 
@@ -681,14 +883,14 @@ fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9).place(width=115, height=42, x=1137,
 
 fr4_in1 = Entry(fr4, bd=2,textvariable=var2, font=("Calibri", 15))
 fr4_in1.place(width=140, height=24, x=993, y=222) #moeda a vender
-fr4_in1.bind("<KeyRelease>",venda_moedainvesti)
+fr4_in1.bind("<KeyRelease>",moeda_vender)
 
 fr4_in2 = Entry(fr4, bd=2, font=("Calibri", 15))
 fr4_in2.place(width=140, height=24, x=993, y=287) #capital
 fr4_in2.bind("<KeyRelease>", venda_capital) 
 
 fr4_in3 = Entry(fr4,textvariable=var3, bd=2, font=("Calibri", 15))
-fr4_in3.bind("<KeyRelease>",venda_moedacompra)
+fr4_in3.bind("<KeyRelease>",moeda_comprar1)
 fr4_in3.place(width=145, height=24, x=993, y=390) #moeda a comprar
 
 # frame 5 Tela de Guardar
@@ -715,26 +917,35 @@ fr5_lab6 = Label(fr5,bd=0, image=fr5_img_13).place(width=480, height=52, x=462, 
 
 fr5_lab7 = Label(fr5,text= 'ola', font=("Calibri", 15)).place(width=145, height=24, x=991, y=416) #Montante
 
-fr5_lab8 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=225) #label do USD
+fr5_lab8 = Label(fr5, text='',bd=0)
+fr5_lab8.place(width=200, height=40, x=230, y=225) #label do USD
 
-fr5_lab9 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=307) #label do EURO
+fr5_lab9 = Label(fr5, text='',bd=0)
+fr5_lab9.place(width=200, height=40, x=230, y=307) #label do EURO
 
-fr5_lab10 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=380) #label do Libra
+fr5_lab10 = Label(fr5, text='',bd=0)
+fr5_lab10.place(width=200, height=40, x=230, y=380) #label do Libra
 
-fr5_lab11 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=460) #label do Bitcoin
+fr5_lab11 = Label(fr5, text='',bd=0)
+fr5_lab11.place(width=200, height=40, x=230, y=460) #label do Bitcoin
 
-fr5_lab12 = Label(fr5, text='',bd=0).place(width=200, height=40, x=230, y=535) #label do Ethereum
+fr5_lab12 = Label(fr5, text='',bd=0)
+fr5_lab12.place(width=200, height=40, x=230, y=535) #label do Ethereum
 
-fr5_lab13 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=225) #label do USD Média
+fr5_lab13 = Label(fr5, text='',bd=0)
+fr5_lab13.place(width=465, height=40, x=470, y=225) #label do USD Média
 
-fr5_lab14 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=307) #label do Euro Média
+fr5_lab14 = Label(fr5, text='',bd=0)
+fr5_lab14.place(width=465, height=40, x=470, y=307) #label do Euro Média
 
-fr5_lab15 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=380) #label do Libra Média
+fr5_lab15 = Label(fr5, text='',bd=0)
+fr5_lab15.place(width=465, height=40, x=470, y=380) #label do Libra Média
 
-fr5_lab16 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+fr5_lab16 = Label(fr5, text='',bd=0)
+fr5_lab16.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
 
-fr5_lab17 = Label(fr5, text='',bd=0).place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
-
+fr5_lab17 = Label(fr5, text='',bd=0)
+fr5_lab17.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
 
 # Criação de botões 
 
@@ -749,7 +960,9 @@ fr5_bt4 = Button(fr5, bd=0, image=fr5_img_8).place(width=115, height=42, x=996, 
 #  botão de Confirmar
 fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9).place(width=115, height=42, x=1130, y=510)
 
-fr5_in1 = Entry(fr5, bd=2,textvariable=var4, font=("Calibri", 15)).place(width=140, height=24, x=992, y=222) #moeda a Inserir
+fr5_in1 = Entry(fr5, bd=2,textvariable=var4, font=("Calibri", 15))
+fr5_in1.place(width=140, height=24, x=992, y=222) #moeda a Inserir
+fr5_in1.bind("<KeyRelease>",moeda_guardar)
 
 fr5_in2 = Entry(fr5, bd=2, font=("Calibri", 15))
 fr5_in2.place(width=140, height=24, x=992, y=287) #capital
@@ -759,6 +972,7 @@ fr5_in3 = Entry(fr5, bd=2, font=("Calibri", 15))
 fr5_in3.place(width=145, height=24, x=990, y=348) 
 fr5_in3.bind("<KeyRelease>",guarda_tempo)#Tempo
 
-# Rodar o programa
+
+
 fr0.grid()
 root.mainloop()
