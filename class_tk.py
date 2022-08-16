@@ -569,7 +569,8 @@ fr2_img_6 = PhotoImage(file="imagens\\grafico.png")
 fr2_img_7 = PhotoImage(file="imagens\\moedas.png")
 fr2_img_8 = PhotoImage(file="imagens\\cotação do dia.png")
 fr2_img_9 = PhotoImage(file="imagens\\media.png")
-fr2_img_10 =  PhotoImage(file="imagens\\tela sem fundo.png")
+fr2_img_10 =  PhotoImage(file="imagens\\fundo 3.png")
+fr2_img_11 =  PhotoImage(file="imagens\\sair.png")
 
 #frame 3
 fr3_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -585,6 +586,7 @@ fr3_img_10 = PhotoImage(file="imagens\\grafico.png")
 fr3_img_11 = PhotoImage(file="imagens\\moedas.png")
 fr3_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
 fr3_img_13 = PhotoImage(file="imagens\\media.png")
+fr3_img_14 = PhotoImage(file="imagens\\volta.png")
 
 #frame 4
 fr4_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -599,6 +601,7 @@ fr4_img_10 = PhotoImage(file="imagens\\grafico.png")
 fr4_img_11 = PhotoImage(file="imagens\\moedas.png")
 fr4_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
 fr4_img_13 = PhotoImage(file="imagens\\media.png")
+fr4_img_14 = PhotoImage(file="imagens\\volta.png")
 
 #frame 5
 fr5_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -606,13 +609,14 @@ fr5_img_2 = PhotoImage(file="imagens\\guardar.png")
 fr5_img_3 = PhotoImage(file="imagens\\comprar.png")
 fr5_img_4 = PhotoImage(file="imagens\\vender.png")
 fr5_img_5 = PhotoImage(file="imagens\\tabela.png")
-fr5_img_6= PhotoImage(file="imagens\\moeda e investir.png")
+fr5_img_6= PhotoImage(file="imagens\\investir.png")
 fr5_img_8 = PhotoImage(file="imagens\\limpa.png")
 fr5_img_9 = PhotoImage(file="imagens\\confirmar.png")
 fr5_img_10 = PhotoImage(file="imagens\\grafico.png")
 fr5_img_11 = PhotoImage(file="imagens\\moedas.png")
 fr5_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
 fr5_img_13 = PhotoImage(file="imagens\\media.png")
+fr5_img_14 = PhotoImage(file="imagens\\volta.png")
 
 #frame 6
 
@@ -720,7 +724,8 @@ fr2_lab4 = Label(fr2,bd=0, image=fr2_img_8).place(width=218, height=52, x=222, y
 
 fr2_lab5 = Label(fr2,bd=0, image=fr2_img_9).place(width=480, height=52, x=462, y=148) # label media
 
-fr2_lab6 = Label(fr2, image=fr2_img_10,bd=0).place(width=310, height=470, x=970, y=130)
+fr2_lab6 = Label(fr2, image=fr2_img_10,bd=0)
+fr2_lab6.place(width=310, height=470, x=970, y=130)
 
 fr2_lab7 = Label(fr2, text='',bd=0)
 fr2_lab7.place(width=200, height=40, x=230, y=225) #label do USD
@@ -752,6 +757,23 @@ fr2_lab15.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
 fr2_lab16 = Label(fr2, text='',bd=0)
 fr2_lab16.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
 
+fr2_lab17 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab17.place(width=145, height=24, x=991, y=191) #Nome
+
+fr2_lab18 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab18.place(width=145, height=24, x=991, y=252) #Dólar
+
+fr2_lab19 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab19.place(width=145, height=24, x=991, y=308) #Euro
+
+fr2_lab20 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab20.place(width=145, height=24, x=991, y=360) #libra
+
+fr2_lab21 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab21.place(width=145, height=24, x=991, y=416) #Bitcoin
+
+fr2_lab22 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab22.place(width=145, height=24, x=991, y=472) #Ethereum
 
 # Criação de botões
 
@@ -761,7 +783,9 @@ fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),
 fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de vender
 fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
-
+# Botão de Sair
+fr2_bt4 = Button(fr2,bd=0,image=fr2_img_11, command= lambda:[fr2.grid_remove(),fr0.grid(),root.geometry("484x560+800+155")])
+fr2_bt4.place(width=115, height=42, x=1070, y=518)
 
 
 # frame 3 # tela da Compra
@@ -831,12 +855,15 @@ fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3, command= lambda:[fr3.grid_remove(),
 fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 # Botão de limpar
 fr3_bt4 = Button(fr3, bd=0, image=fr3_img_8, command=lambda: [clear_1()])
-fr3_bt4.place(width=115, height=42, x=996, y=503)
+fr3_bt4.place(width=115, height=43, x=996, y=461)
 
 #  botão de Confirmar
 fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9, command=lambda: [escolha_dolar2()])
-fr3_bt5.place(width=115, height=42, x=1137, y=504)
+fr3_bt5.place(width=115, height=42, x=1137, y=462)
 
+# Botão de voltar
+fr3_bt6 = Button(fr3, bd=0, image=fr3_img_14, command=lambda: [fr3.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")])
+fr3_bt6.place(width=115, height=42, x=1069, y=524)
 
 
 fr3_in1 = Entry(fr3,bd=2,textvariable=var1, font=("Calibri", 15))
@@ -919,9 +946,14 @@ fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr4.grid_remove(),
 
 # Botão de limpar
 fr4_bt4 = Button(fr4, bd=0, image=fr4_img_8, command=lambda: [clear_2()] )
-fr4_bt4.place(width=115, height=42, x=996, y=504)
+fr4_bt4.place(width=115, height=43, x=1147, y=502)
 #  botão de Confirmar
-fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9).place(width=115, height=42, x=1137, y=504)
+fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9)
+fr4_bt5.place(width=115, height=42, x=1147, y=438)
+
+# Botão de voltar
+fr4_bt6 = Button(fr4, bd=0, image=fr4_img_14, command=lambda: [fr4.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")])
+fr4_bt6.place(width=115, height=42, x=1002, y=503)
 
 
 fr4_in1 = Entry(fr4, bd=2,textvariable=var2, font=("Calibri", 15))
@@ -1001,9 +1033,13 @@ fr5_bt2 = Button(fr5, bd=0, image=fr5_img_3,command= lambda:[fr5.grid_remove(),f
 fr5_bt3 = Button(fr5, bd=0, image=fr5_img_4,command= lambda:[fr5.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 # Botão de limpar
 fr5_bt4 = Button(fr5, bd=0, image=fr5_img_8, command=lambda: [clear_3()])
-fr5_bt4.place(width=115, height=42, x=996, y=510)
+fr5_bt4.place(width=115, height=42, x=996, y=459)
 #  botão de Confirmar
-fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9).place(width=115, height=42, x=1130, y=510)
+fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9)
+fr5_bt5.place(width=115, height=42, x=1130, y=460)
+# Botão de voltar
+fr5_bt6 = Button(fr5, bd=0, image=fr4_img_14, command=lambda: [fr5.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")])
+fr5_bt6.place(width=115, height=42, x=1062, y=525)
 
 fr5_in1 = Entry(fr5, bd=2,textvariable=var4, font=("Calibri", 15))
 fr5_in1.place(width=140, height=24, x=992, y=222) #moeda a Inserir
