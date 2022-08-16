@@ -117,7 +117,13 @@ def clear_3():
     fr5_lab7['text'] =''
     fr5_in1.delete(0,'end')
     fr5_in2.delete(0,'end')
-    fr5_in3.delete(0,'end')      
+    fr5_in3.delete(0,'end')   
+
+#limpar a tela de login
+def clear_4():
+    fr0_in2.delete(0,'end')
+    fr0_in3.delete(0,'end') 
+  
 
 #def clean(self):
 #        fr3_bt4 = self.fr3_bt4
@@ -648,7 +654,7 @@ fr0_in3.place(width=392, height=45, x=37, y=302)
 
 #CONSTRUÇÃO EWERSON
 # Botão do entrar
-fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [logando(), chama_cotacao(), chama_media()])
+fr0_bt0 = Button(fr0, bd=0, image=fr0_img_2,command=lambda: [logando(), chama_cotacao(), chama_media(),clear_4()])
 fr0_bt0.place(width=118, height=64, x=290, y=408)
 
 # Botão do cadastro
