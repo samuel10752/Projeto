@@ -102,11 +102,22 @@ var5.trace("w", maiusculo)
 #limpar o Label do montante na tela comprar
 def clear_1():
     fr3_lab7['text'] =''
-    fr3_in1[''] =''
-    fr3_in2[''] =''
-    fr3_in3[''] =''
-#limpar o entre da moeda na tela comprar
-   
+    fr3_in1.delete(0,'end')
+    fr3_in2.delete(0,'end')
+    fr3_in3.delete(0,'end')
+#limpar o entre da moeda na tela vender
+def clear_2():
+    fr4_lab7['text'] =''
+    fr4_in1.delete(0,'end')
+    fr4_in2.delete(0,'end')
+    fr4_in3.delete(0,'end')  
+
+#limpar o entre da moeda na tela guardar
+def clear_3():
+    fr5_lab7['text'] =''
+    fr5_in1.delete(0,'end')
+    fr5_in2.delete(0,'end')
+    fr5_in3.delete(0,'end')      
 
 #def clean(self):
 #        fr3_bt4 = self.fr3_bt4
@@ -828,7 +839,7 @@ fr3_bt5.place(width=115, height=42, x=1137, y=504)
 
 
 
-fr3_in1 = Entry(fr3, bd=2,textvariable=var1, font=("Calibri", 15))
+fr3_in1 = Entry(fr3,bd=2,textvariable=var1, font=("Calibri", 15))
 fr3_in1.place(width=140, height=24, x=995, y=200) 
 fr3_in1.bind("<KeyRelease>",moeda_comprar)   #moeda
 
@@ -863,7 +874,8 @@ fr4_lab5 = Label(fr4,bd=0, image=fr4_img_12).place(width=218, height=52, x=222, 
 
 fr4_lab6 = Label(fr4,bd=0, image=fr4_img_13).place(width=480, height=52, x=462, y=148) # label media
 
-fr4_lab7 = Label(fr4,text='ola', font=("Calibri", 15)).place(width=145, height=24, x=993, y=454) #Montante
+fr4_lab7 = Label(fr4,text='ola', font=("Calibri", 15))
+fr4_lab7.place(width=145, height=24, x=993, y=454) #Montante
 
 fr4_lab8 = Label(fr4, text='',bd=0)
 fr4_lab8.place(width=200, height=40, x=230, y=225) #label do USD
@@ -906,7 +918,8 @@ fr4_bt2 = Button(fr4, bd=0, image=fr4_img_3, command= lambda:[fr4.grid_remove(),
 fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr4.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 
 # Botão de limpar
-fr4_bt4 = Button(fr4, bd=0, image=fr4_img_8).place(width=115, height=42, x=996, y=504)
+fr4_bt4 = Button(fr4, bd=0, image=fr4_img_8, command=lambda: [clear_2()] )
+fr4_bt4.place(width=115, height=42, x=996, y=504)
 #  botão de Confirmar
 fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9).place(width=115, height=42, x=1137, y=504)
 
@@ -945,7 +958,8 @@ fr5_lab5 = Label(fr5,bd=0, image=fr5_img_12).place(width=218, height=52, x=222, 
 
 fr5_lab6 = Label(fr5,bd=0, image=fr5_img_13).place(width=480, height=52, x=462, y=148) # label media
 
-fr5_lab7 = Label(fr5,text= 'ola', font=("Calibri", 15)).place(width=145, height=24, x=991, y=416) #Montante
+fr5_lab7 = Label(fr5,text= 'ola', font=("Calibri", 15))
+fr5_lab7.place(width=145, height=24, x=991, y=416) #Montante
 
 fr5_lab8 = Label(fr5, text='',bd=0)
 fr5_lab8.place(width=200, height=40, x=230, y=225) #label do USD
@@ -986,7 +1000,8 @@ fr5_bt2 = Button(fr5, bd=0, image=fr5_img_3,command= lambda:[fr5.grid_remove(),f
 # Botão de venda
 fr5_bt3 = Button(fr5, bd=0, image=fr5_img_4,command= lambda:[fr5.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
 # Botão de limpar
-fr5_bt4 = Button(fr5, bd=0, image=fr5_img_8).place(width=115, height=42, x=996, y=510)
+fr5_bt4 = Button(fr5, bd=0, image=fr5_img_8, command=lambda: [clear_3()])
+fr5_bt4.place(width=115, height=42, x=996, y=510)
 #  botão de Confirmar
 fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9).place(width=115, height=42, x=1130, y=510)
 
