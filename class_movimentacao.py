@@ -10,4 +10,3 @@ from class_usuario import*
 #        self.meses = meses
 #        self.montante = montante
 #        
-        

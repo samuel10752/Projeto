@@ -52,69 +52,48 @@ class Cotacao:
         cotacao = requisicao.json()
         self.d3=0
         for i in cotacao:
-            self.d3 = (self.d3+float(i['bid']))/len(cotacao)
-        
-#VALOR DOS ÚLTIMOS 3 MESES  
+            self.d3 = round((self.d3+float(i['bid']))/len(cotacao),3)
+#VALOR DOS ÚLTIMOS 3 MESES
     def euro1(self):
         requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/EUR-BRL/90')
         cotacao = requisicao.json()
         self.e3=0
         for i in cotacao:
-            self.e3 = (self.e3+float(i['bid']))/len(cotacao)
+            self.e3 = round((self.e3+float(i['bid']))/len(cotacao),3)
 #VALOR DOS ÚLTIMOS 3 MESES
     def libra1(self):
         requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/GBP-BRL/90')
         cotacao = requisicao.json()
         self.l3=0
         for i in cotacao:
-            self.l3 = self.l3+float(i['bid'])/len(cotacao)
+            self.l3 = round(self.l3+float(i['bid'])/len(cotacao),3)
 #VALOR DOS ÚLTIMOS 3 MESES
     def bitcoin1(self):
         requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/BTC-BRL/90')
         cotacao = requisicao.json()
         self.b3=0
         for i in cotacao:
-            self.b3 = (self.b3+float(i['bid']))/len(cotacao)
+            self.b3 = round((self.b3+float(i['bid']))/len(cotacao),3)
 #VALOR DOS ÚLTIMOS 3 MESES
     def ethereum1(self):
         requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/ETH-BRL/90')
         cotacao = requisicao.json()
         self.et3=0
         for i in cotacao:
-            self.et3 = (self.et3+float(i['bid']))/len(cotacao)
+            self.et3 = round((self.et3+float(i['bid']))/len(cotacao),3)
 
 #VALOR VARIÁVEL, ESCOLHA DO CLIENTE
     def dolar2(self, meses):
-        requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/USD-BRL/{meses*30}')
-        cotacao = requisicao.json()
-        self.md=0
-        for i in cotacao:
-            self.md = (self.md+float(i['bid']))/len(cotacao)
+        self.md = (meses*self.d3)/3
 #VALOR VARIÁVEL, ESCOLHA DO CLIENTE  
     def euro2(self, meses):
-        requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/EUR-BRL/{meses*30}')
-        cotacao = requisicao.json()
-        self.me=0
-        for i in cotacao:
-            self.me = (self.me+float(i['bid']))//len(cotacao)
+        self.me = (meses*self.e3)/3
 #VALOR VARIÁVEL, ESCOLHA DO CLIENTE
     def libra2(self, meses):
-        requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/GBP-BRL/{meses*30}')
-        cotacao = requisicao.json()
-        self.ml=0
-        for i in cotacao:
-            self.ml = (self.ml+float(i['bid']))/len(cotacao)
+        self.ml = (meses*self.l3)/3
 #VALOR VARIÁVEL, ESCOLHA DO CLIENTE
     def bitcoin2(self, meses):
-        requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/BTC-BRL/{meses*30}')
-        cotacao = requisicao.json()
-        self.mb=0
-        for i in cotacao:
-            self.mb = (self.mb+float(i['bid']))//len(cotacao)
+        self.mb = (meses*self.b3)/3
 #VALOR VARIÁVEL, ESCOLHA DO CLIENTE
     def ethereum2(self, meses):
-        requisicao = requests.get(f'https://economia.awesomeapi.com.br/json/daily/ETH-BRL/{meses*30}')
-        cotacao = requisicao.json()
-        self.met=0
-        for i in cotacao:
-            self.met = (self.met+float(i['bid']))/len(cotacao)
+        self.met = (meses*self.et3)/3

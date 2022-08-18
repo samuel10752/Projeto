@@ -14,12 +14,11 @@ from math import fabs
 from struct import pack
 from time import time
 from tkinter import *
-from cpfcnpj import*
 #CONSTRUÇÃO EWERSON
-
 
 import tkinter as tk
 from turtle import title, width
+
 
 #CONSTRUÇÃO EWERSON
 cotar = Cotacao()
@@ -32,73 +31,36 @@ root.resizable(height = False, width = False)
 root.geometry("484x560+800+155")
 root.iconbitmap(default="icones\\ico.ico")
 
-
 fr0 = Frame()
 fr1 = Frame()
 fr2 = Frame()
-fr3 = Frame()
+#fr3 = Frame()
 fr4 = Frame()
 fr5 = Frame()
 
-
 # Variáveis globais
-
-#def isCPFValido(cpf, d1=0, d2=0, i=0):
-#    if cpf is not None:
-#        if len(cpf) > 11:
-#            return False
-#        while i < 10:
-#            d1, d2, i = (d1 + (int(cpf[i]) * (11 - i - 1))) % 11 if i < 9 else d1, (
-#            d2 + (int(cpf[i]) * (11 - i))) % 11, i + 1
-#        return (int(cpf[9]) == (11 - d1 if d1 > 1 else 0)) and (int(cpf[10]) == (11 - d2 if d2 > 1 else 0))
-#    else:
-#        return False
-#
-#
-#def validar_cnpj(cnpj):
-#  if not isinstance(cnpj, basestring):
-#    cnpj = str(cnpj)
-#  cnpj = format_cnpj(cnpj)
-#  cnpj = ''.join(re.findall('\d', cnpj))
-#  if (not cnpj) or (len(cnpj) < 14):
-#    return False
-#  # Pega apenas os 12 primeiros dígitos do CNPJ e gera os 2 dígitos que faltam
-#  inteiros = map(int, cnpj)
-#  novo = inteiros[:12]
-#  prod = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-#  while len(novo) < 14:
-#    r = sum([x*y for (x, y) in zip(novo, prod)]) % 11
-#    if r > 1:
-#      f = 11 - r
-#    else:
-#      f = 0
-#    novo.append(f)
-#    prod.insert(0, 6)
-#  # Se o número gerado coincidir com o número original, é válido
-#  if novo == inteiros:
-#    return cnpj
-#  return False
 
 #CONSTRUÇÃO EWERSON
 def logando():
     mysqldb = mysql.connector.connect(host='localhost',user='root',password='q1w2e3',database='investimentos')
     mycursor = mysqldb.cursor()
-    global user
+    global user, x
     user = fr0_in2.get()
     passw = fr0_in3.get()
     sql = 'select nome, senha from Usuarios where cpf_cnpj = %s and senha = %s'
     mycursor.execute(sql, [(user), (passw)])
     results = mycursor.fetchall()
     if results:
+        x=results[0]
         messagebox.showinfo('', 'login')
         fr0.grid_remove()
         fr2.grid()
+        fr2_lab17['text']=x[0]
         root.geometry("1289x600+310+153")
         return True
         
     else: 
         messagebox.showinfo('','erro')
-
 
 def fazer_cadastro():
     cpf_cnpj = fr1_in0.get()
@@ -137,43 +99,28 @@ def maiusculo(*args):
 var5.trace("w", maiusculo)
 
 #limpar o Label do montante na tela comprar
-def clear_1():
-    fr3_lab7['text'] =''
-    fr3_in1.delete(0,'end')
-    fr3_in2.delete(0,'end')
-    fr3_in3.delete(0,'end')
+#def clear_1():
+#    fr3_lab7['text'] =''
+#    fr3_in1.delete(0,'end')
+#    fr3_in2.delete(0,'end')
+#    fr3_in4.delete(0,'end')
 #limpar o entre da moeda na tela vender
 def clear_2():
     fr4_lab7['text'] =''
     fr4_in1.delete(0,'end')
     fr4_in2.delete(0,'end')
-    fr4_in3.delete(0,'end')  
-
+#    fr4_in3.delete(0,'end')  
 #limpar o entre da moeda na tela guardar
 def clear_3():
     fr5_lab7['text'] =''
     fr5_in1.delete(0,'end')
     fr5_in2.delete(0,'end')
     fr5_in3.delete(0,'end')   
-
 #limpar a tela de login
 def clear_4():
     fr0_in2.delete(0,'end')
-    fr0_in3.delete(0,'end') 
-  
+    fr0_in3.delete(0,'end')
 
-#def clean(self):
-#        fr3_bt4 = self.fr3_bt4
-#        cc_myself = fr3_bt4.get("cc_myself")
-#        subject = fr3_bt4.get("subject")
-#
-#        if cc_myself and subject:
-#            # Somente faça algo se amgos os campos forem válidos.
-#            if "help" not in subject:
-#                raise forms.ValidationError("Did not send for 'help' in "
-#                        "the subject despite CC'ing yourself.")
-
-# Entre do nome cadastro    
 def nome(event=None):
     x=fr1_in2.get()
     y=''
@@ -184,51 +131,8 @@ def nome(event=None):
     fr1_in2.delete(0, 'end')
     fr1_in2.insert(0, y)
 
-#entre da moeda da comprar
-def moeda_comprar(event=None):
-    x=fr3_in1.get()
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] not in '0123456789':
-            y+=x[i]
-    fr3_in1.delete(0, 'end')
-    fr3_in1.insert(0, y)    
-
-# entre da moeda do vender
-def moeda_vender(event=None):
-    x=fr4_in1.get()
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] not in '0123456789':
-            y+=x[i]
-    fr4_in1.delete(0, 'end')
-    fr4_in1.insert(0, y)      
-
-# entre da moeda a comprar na tela vender
-def moeda_comprar1(event=None):
-    x=fr4_in3.get()
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] not in '0123456789':
-            y+=x[i]
-    fr4_in3.delete(0, 'end')
-    fr4_in3.insert(0, y)       
-
-# entre da moeda na tela guardar
-def moeda_guardar(event=None):
-    x=fr5_in1.get()
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] not in '0123456789':
-            y+=x[i]
-    fr5_in1.delete(0, 'end')
-    fr5_in1.insert(0, y)        
-
 #Data de nascimento
+
 def data_nasc(event=None):
     x=fr1_in3.get().replace('/','')[:8]
     y=''
@@ -261,38 +165,38 @@ def telefone_cadastro(event=None):
     fr1_in4.insert(0, y)
 
 #tela do capital tempo
-def compra_tempo(event=None):
-    x=fr3_in3.get()
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] in '0123456789':
-            y+=x[i]
-    fr3_in3.delete(0, 'end')
-    fr3_in3.insert(0, y)
+#def compra_tempo(event=None):
+#    x=fr3_in4.get()
+#    y=''
+#    if event.keysym.lower() == "backspace": return
+#    for i in range(len(x)):
+#        if x[i] in '0123456789':
+#            y+=x[i]
+#    fr3_in4.delete(0, 'end')
+#    fr3_in4.insert(0, y)
 
 #venda moeda investi
-def venda_moedacompra(event=None):
-    x=fr3_in3.get()
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] in '0123456789':
-            y+=x[i]
-    fr3_in3.delete(0, 'end')
-    fr3_in3.insert(0, y)
+#def venda_moedacompra(event=None):
+#    x=fr3_in4.get()
+#    y=''
+#    if event.keysym.lower() == "backspace": return
+#    for i in range(len(x)):
+#        if x[i] in '0123456789':
+#            y+=x[i]
+#    fr3_in4.delete(0, 'end')
+#    fr3_in4.insert(0, y)
 
 
 #venda moeda comprar
-def venda_moedainvesti(event=None):
-    x=fr4_in3 .get()
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] in '0123456789':
-            y+=x[i]
-    fr4_in3 .delete(0, 'end')
-    fr4_in3 .insert(0, y)
+#def venda_moedainvesti(event=None):
+#    x=fr4_in3 .get()
+#    y=''
+#    if event.keysym.lower() == "backspace": return
+#    for i in range(len(x)):
+#        if x[i] in '0123456789':
+#            y+=x[i]
+#    fr4_in3 .delete(0, 'end')
+#    fr4_in3 .insert(0, y)
 
 #guadar tempo    
 def guarda_tempo(event=None):
@@ -306,21 +210,21 @@ def guarda_tempo(event=None):
     fr5_in3 .insert(0, y)
 
 # Compra capital tela 
-def comprar_capital(event=None):
-    x = fr3_in2 .get().replace(',', '.')
-    y = ''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if x[i] in '0123456789':
-            y += x[i]
-        elif x[i] in '.':
-            y += x[i]
-        else:
-            y += ''
-    if y.count('.') > 1:
-        y=y[:-1]
-    fr3_in2 .delete(0, 'end')
-    fr3_in2 .insert(0, y)
+#def comprar_capital(event=None):
+#    x = fr3_in2 .get().replace(',', '.')
+#    y = ''
+#    if event.keysym.lower() == "backspace": return
+#    for i in range(len(x)):
+#        if x[i] in '0123456789':
+#            y += x[i]
+#        elif x[i] in '.':
+#            y += x[i]
+#        else:
+#            y += ''
+#    if y.count('.') > 1:
+#        y=y[:-1]
+#    fr3_in2 .delete(0, 'end')
+#    fr3_in2 .insert(0, y)
 
 # guarada capital tela 
 def guarda_capital(event=None):
@@ -406,21 +310,21 @@ def cpf_1(event=None):
     fr1_in0.insert(0, y)
 
 def cnpj(event=None):
-            x=fr0_in2.get().replace('.','').replace('/', '').replace('-', '')[:14]
-            y=''
-            if event.keysym.lower() == "backspace": return
-            for i in range(len(x)):
-                if x[i] in '01234567891011':
-                    if i in [1,4]:
-                        y+=x[i] + '.'
-                    elif i == 7:
-                        y+=x[i] + '/'
-                    elif i == 11:
-                        y+=x[i] + '-' 
-                    else:
-                        y+=x[i]
-            fr0_in2.delete(0, 'end')
-            fr0_in2.insert(0, y)
+    x=fr0_in2.get().replace('.','').replace('/', '').replace('-', '')[:14]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] in '01234567891011':
+            if i in [1,4]:
+                y+=x[i] + '.'
+            elif i == 7:
+                y+=x[i] + '/'
+            elif i == 11:
+                y+=x[i] + '-' 
+            else:
+                y+=x[i]
+    fr0_in2.delete(0, 'end')
+    fr0_in2.insert(0, y)
 
 
 def cnpj_1(event=None):
@@ -440,6 +344,18 @@ def cnpj_1(event=None):
             fr1_in0.delete(0, 'end')
             fr1_in0.insert(0, y)
 
+#Cálculos Button fr3_bt5
+#def comprar_confirmar():
+#    #fr3_in1.get() #MOEDA
+#    #fr3_in2.get() #CAPITAL
+#    #fr3_in4.get() #TEMPO
+#    if fr3_in1.get() == 'DOLAR':
+#        j=float(fr2_lab['text'])
+#        c=float(fr3_in2.get())
+#        t=float(fr3_in4.get())
+#        m = c * ((1 + j/100)**t)
+
+
 #Chamando cotação de todas as moedas
 def chama_cotacao():
     cotar.dolar() 
@@ -454,15 +370,15 @@ def chama_cotacao():
     fr2_lab11['text']=cotar.et
 
     #cotar.dolar() 
-    fr3_lab8['text']=cotar.d
+    #fr3_lab8['text']=cotar.d
     #cotar.euro()
-    fr3_lab9['text']=cotar.e
-    #cotar.libra()
-    fr3_lab10['text']=cotar.l
-    #cotar.bitcoin()
-    fr3_lab11['text']=cotar.b
-    #cotar.ethereum()
-    fr3_lab12['text']=cotar.et
+    #fr3_lab9['text']=cotar.e
+    ##cotar.libra()
+    #fr3_lab10['text']=cotar.l
+    ##cotar.bitcoin()
+    #fr3_lab11['text']=cotar.b
+    ##cotar.ethereum()
+    #fr3_lab12['text']=cotar.et
 
     #cotar.dolar()
     fr4_lab8['text']=cotar.d
@@ -490,7 +406,6 @@ def chama_cotacao():
 def chama_media():
     cotar.dolar1()
     fr2_lab12['text']=cotar.d3
-    print(cotar.d3)
     cotar.euro1()
     fr2_lab13['text']=cotar.e3
     cotar.libra1()
@@ -501,15 +416,15 @@ def chama_media():
     fr2_lab16['text']=cotar.et3
 
     #cotar.dolar() 
-    fr3_lab13['text']=cotar.d3
-    #cotar.euro()
-    fr3_lab14['text']=cotar.e3
-    #cotar.libra()
-    fr3_lab15['text']=cotar.l3
-    #cotar.bitcoin()
-    fr3_lab16['text']=cotar.b3
-    #cotar.ethereum()
-    fr3_lab17['text']=cotar.et3
+    #fr3_lab13['text']=cotar.d3
+    ##cotar.euro()
+    #fr3_lab14['text']=cotar.e3
+    ##cotar.libra()
+    #fr3_lab15['text']=cotar.l3
+    ##cotar.bitcoin()
+    #fr3_lab16['text']=cotar.b3
+    ##cotar.ethereum()
+    #fr3_lab17['text']=cotar.et3
 
     #cotar.dolar()
     fr4_lab13['text']=cotar.d3
@@ -533,17 +448,78 @@ def chama_media():
     #cotar.ethereum()
     fr5_lab17['text']=cotar.et3
 
-def escolha_dolar2():
-    id = None
-    nome_atk = user
-    nome_moeda = fr3_in1.get()
-    capital = float(fr3_in2.get())
-    meses = int(fr3_in3.get())
-    cotar.dolar2(meses)
-    montante = cotar.md + capital 
-    cadastrar.cadastro_movimentacao(id, nome_atk, nome_moeda, capital, meses, montante)
-    fr3_lab7['text']=str(montante)
+def escolha_guardar():
+    cod = 0
+    nome_atk = user     
+    nome_moeda = str(fr5_in1.get())
+    capital = float(fr5_in2.get())
+    meses = int(fr5_in3.get())
+    if nome_moeda == 'DOLAR' or nome_moeda == 'DÓLAR':
+        print('1')
+        cotar.dolar2(meses)
+        montante = cotar.md + capital
+        cadastrar.cadastro_movimentacao(cod, nome_atk, nome_moeda, capital, meses, montante)
+        fr5_lab7['text']=montante
+    if nome_moeda == 'EURO':
+        print('2')
+        cotar.euro2(meses)
+        montante = cotar.me + capital
+        cadastrar.cadastro_movimentacao(cod, nome_atk, nome_moeda, capital, meses, montante)
+        fr5_lab7['text']=montante
+    if nome_moeda == 'LIBRA':
+        print('3')
+        cotar.libra2(meses)
+        montante = cotar.ml + capital
+        cadastrar.cadastro_movimentacao(cod, nome_atk, nome_moeda, capital, meses, montante)
+        fr5_lab7['text']=montante
+    if nome_moeda == 'BITCOIN':
+        print('4')
+        cotar.bitcoin2(meses)
+        montante = cotar.mb + capital
+        cadastrar.cadastro_movimentacao(cod, nome_atk, nome_moeda, capital, meses, montante)
+        fr5_lab7['text']=montante
+    if nome_moeda == 'ETHEREUM':
+        print('5')
+        cotar.ethereum2(meses)
+        montante = cotar.met + capital
+        cadastrar.cadastro_movimentacao(cod, nome_atk, nome_moeda, capital, meses, montante)
+        fr5_lab7['text']=montante
 
+def escolha_vender():
+    cod_n = 0
+    nome_atk_n = user     
+    nome_moeda_n = str(fr4_in1.get())
+    capital_n = float(fr4_in2.get())
+    if nome_moeda_n == 'DOLAR' or nome_moeda_n == 'DÓLAR':
+        print('1')
+        cotar.dolar()
+        montante_n = float(cotar.d) + float(capital_n)
+        cadastrar.cadastro_movimentacao(cod_n, nome_atk_n, nome_moeda_n, capital_n, montante_n)
+        fr5_lab7['text']=montante_n
+    if nome_moeda_n == 'EURO':
+        print('2')
+        cotar.euro()
+        montante_n = cotar.e + capital_n
+        cadastrar.cadastro_movimentacao(cod_n, nome_atk_n, nome_moeda_n, capital_n, montante_n)
+        fr5_lab7['text']=montante_n
+    if nome_moeda_n == 'LIBRA':
+        print('3')
+        cotar.libra()
+        montante_n = cotar.l + capital_n
+        cadastrar.cadastro_movimentacao(cod_n, nome_atk_n, nome_moeda_n, capital_n, montante_n)
+        fr5_lab7['text']=montante_n
+    if nome_moeda_n == 'BITCOIN':
+        print('4')
+        cotar.bitcoin()
+        montante_n = cotar.b + capital_n
+        cadastrar.cadastro_movimentacao(cod_n, nome_atk_n, nome_moeda_n, capital_n, montante_n)
+        fr5_lab7['text']=montante_n
+    if nome_moeda_n == 'ETHEREUM':
+        print('5')
+        cotar.ethereum()
+        montante_n = cotar.t + capital_n
+        cadastrar.cadastro_movimentacao(cod_n, nome_atk_n, nome_moeda_n, capital_n, montante_n)
+        fr5_lab7['text']=montante_n
 
 #def escolha_euro2():
 #    meses = fr3_in4.get()
@@ -582,8 +558,6 @@ def esconder_1(*args):
 
 # Importar imagens
 
-#frame 0
-
 fr0_img_1 = PhotoImage(file="imagens\\fundo.png")
 fr0_img_3 = PhotoImage(file="imagens\\olho.png")
 fr0_img_2 = PhotoImage(file="imagens\\entrar.png")
@@ -615,21 +589,21 @@ fr2_img_9 = PhotoImage(file="imagens\\media.png")
 fr2_img_10 =  PhotoImage(file="imagens\\fundo 3.png")
 fr2_img_11 =  PhotoImage(file="imagens\\sair.png")
 
-#frame 3
-fr3_img_1 = PhotoImage(file="imagens\\tela.png")
-fr3_img_2 = PhotoImage(file="imagens\\guardar.png")
-fr3_img_3 = PhotoImage(file="imagens\\comprar.png")
-fr3_img_4 = PhotoImage(file="imagens\\vender.png")
-fr3_img_5 = PhotoImage(file="imagens\\tabela.png")
-fr3_img_6 = PhotoImage(file="imagens\\compra.png")
-fr3_img_7 = PhotoImage(file="imagens\\comprar.png")
-fr3_img_8 = PhotoImage(file="imagens\\limpa.png")
-fr3_img_9 = PhotoImage(file="imagens\\confirmar.png")
-fr3_img_10 = PhotoImage(file="imagens\\grafico.png")
-fr3_img_11 = PhotoImage(file="imagens\\moedas.png")
-fr3_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
-fr3_img_13 = PhotoImage(file="imagens\\media.png")
-fr3_img_14 = PhotoImage(file="imagens\\volta.png")
+##frame 3
+#fr3_img_1 = PhotoImage(file="imagens\\tela.png")
+#fr3_img_2 = PhotoImage(file="imagens\\guardar.png")
+#fr3_img_3 = PhotoImage(file="imagens\\comprar.png")
+#fr3_img_4 = PhotoImage(file="imagens\\vender.png")
+#fr3_img_5 = PhotoImage(file="imagens\\tabela.png")
+#fr3_img_6 = PhotoImage(file="imagens\\compra.png")
+#fr3_img_7 = PhotoImage(file="imagens\\comprar.png")
+#fr3_img_8 = PhotoImage(file="imagens\\limpa.png")
+#fr3_img_9 = PhotoImage(file="imagens\\confirmar.png")
+#fr3_img_10 = PhotoImage(file="imagens\\grafico.png")
+#fr3_img_11 = PhotoImage(file="imagens\\moedas.png")
+#fr3_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
+#fr3_img_13 = PhotoImage(file="imagens\\media.png")
+#fr3_img_14 = PhotoImage(file="imagens\\volta.png")
 
 #frame 4
 fr4_img_1 = PhotoImage(file="imagens\\tela.png")
@@ -660,7 +634,6 @@ fr5_img_11 = PhotoImage(file="imagens\\moedas.png")
 fr5_img_12 = PhotoImage(file="imagens\\cotação do dia.png")
 fr5_img_13 = PhotoImage(file="imagens\\media.png")
 fr5_img_14 = PhotoImage(file="imagens\\volta.png")
-
 #frame 6
 
 # Criação de labels 
@@ -800,126 +773,124 @@ fr2_lab15.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
 fr2_lab16 = Label(fr2, text='',bd=0)
 fr2_lab16.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
 
-fr2_lab17 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab17 = Label(fr2, text='', font=("Calibri", 15))
 fr2_lab17.place(width=145, height=24, x=991, y=191) #Nome
 
-fr2_lab18 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab18 = Label(fr2, text='', font=("Calibri", 15))
 fr2_lab18.place(width=145, height=24, x=991, y=252) #Dólar
 
-fr2_lab19 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab19 = Label(fr2, text='', font=("Calibri", 15))
 fr2_lab19.place(width=145, height=24, x=991, y=308) #Euro
 
-fr2_lab20 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab20 = Label(fr2, text='', font=("Calibri", 15))
 fr2_lab20.place(width=145, height=24, x=991, y=360) #libra
 
-fr2_lab21 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab21 = Label(fr2, text='', font=("Calibri", 15))
 fr2_lab21.place(width=145, height=24, x=991, y=416) #Bitcoin
 
-fr2_lab22 = Label(fr2, text='ola', font=("Calibri", 15))
+fr2_lab22 = Label(fr2, text='', font=("Calibri", 15))
 fr2_lab22.place(width=145, height=24, x=991, y=472) #Ethereum
 
 # Criação de botões
 
 # Botão de guardar
-fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+fr2_bt1 = Button(fr2, bd=0, image=fr2_img_2, command= lambda:[fr2.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=525, y=32)
 # Botão de comprar
-fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+#fr2_bt2 = Button(fr2, bd=0, image=fr2_img_3, command= lambda:[fr2.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de vender
-fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+fr2_bt3 = Button(fr2, bd=0, image=fr2_img_4, command= lambda:[fr2.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=158, y=32)
 # Botão de Sair
 fr2_bt4 = Button(fr2,bd=0,image=fr2_img_11, command= lambda:[fr2.grid_remove(),fr0.grid(),root.geometry("484x560+800+155")])
 fr2_bt4.place(width=115, height=42, x=1070, y=518)
-
 
 # frame 3 # tela da Compra
 
 # Criação de labels 
 
 
-# tela do Investidor de Compra
-fr3_lab = Label(fr3, image=fr3_img_1, width=1285).grid(row=0,column=0,sticky=W)
-
-# imagem compra
-fr3_lab1 = Label(fr3, image=fr3_img_6,bd=0).place(width=310, height=470, x=970, y=130)
-
-# image tabela
-fr3_lab2 = Label(fr3,bd=0, image=fr3_img_5).place(width=305, height=65, x=974, y=26)
-#tela do grafico
-fr3_lab3 = Label(fr3, image=fr3_img_10, width=1000).place(width=950, height=470, x=5, y=125) # 
-
-
-fr3_lab4 = Label(fr3,bd=0, image=fr3_img_11).place(width=178, height=52, x=30, y=148) # label moeda
-
-fr3_lab5 = Label(fr3,bd=0, image=fr3_img_12).place(width=218, height=52, x=222, y=148) # label cotação
-
-fr3_lab6 = Label(fr3,bd=0, image=fr3_img_13).place(width=480, height=52, x=462, y=148) # label media
-
-fr3_lab7 = Label(fr3, text='ola', font=("Calibri", 15))
-fr3_lab7.place(width=145, height=24, x=995, y=400) #Montante
-
-fr3_lab8 = Label(fr3, text='',bd=0)
-fr3_lab8.place(width=200, height=40, x=230, y=225) #label do USD
-
-fr3_lab9 = Label(fr3, text='',bd=0)
-fr3_lab9.place(width=200, height=40, x=230, y=307) #label do EURO
-
-fr3_lab10 = Label(fr3, text='',bd=0)
-fr3_lab10.place(width=200, height=40, x=230, y=380) #label do Libra
-
-fr3_lab11 = Label(fr3, text='',bd=0)
-fr3_lab11.place(width=200, height=40, x=230, y=460) #label do Bitcoin
-
-fr3_lab12 = Label(fr3, text='',bd=0)
-fr3_lab12.place(width=200, height=40, x=230, y=535) #label do Ethereum
-
-fr3_lab13 = Label(fr3, text='',bd=0)
-fr3_lab13.place(width=465, height=40, x=470, y=225) #label do USD Média
-
-fr3_lab14 = Label(fr3, text='',bd=0)
-fr3_lab14.place(width=465, height=40, x=470, y=307) #label do Euro Média
-
-fr3_lab15 = Label(fr3, text='',bd=0)
-fr3_lab15.place(width=465, height=40, x=470, y=380) #label do Libra Média
-
-fr3_lab16 = Label(fr3, text='',bd=0)
-fr3_lab16.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
-
-fr3_lab17 = Label(fr3, text='',bd=0)
-fr3_lab17.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
-
-
-# Criação de botões 
-
-# Botão de guardar
-fr3_bt1 = Button(fr3, bd=0, image=fr3_img_2, command= lambda:[fr3.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
-# Botão de comprar
-fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3, command= lambda:[fr3.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
-# Botão de vender
-fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
-# Botão de limpar
-fr3_bt4 = Button(fr3, bd=0, image=fr3_img_8, command=lambda: [clear_1()])
-fr3_bt4.place(width=115, height=43, x=996, y=461)
-
-#  botão de Confirmar
-fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9, command=lambda: [escolha_dolar2()])
-fr3_bt5.place(width=115, height=42, x=1137, y=462)
-
-# Botão de voltar
-fr3_bt6 = Button(fr3, bd=0, image=fr3_img_14, command=lambda: [fr3.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")])
-fr3_bt6.place(width=115, height=42, x=1069, y=524)
-
-
-fr3_in1 = Entry(fr3,bd=2,textvariable=var1, font=("Calibri", 15))
-fr3_in1.place(width=140, height=24, x=995, y=200) 
-fr3_in1.bind("<KeyRelease>",moeda_comprar)   #moeda
-
-fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15))
-fr3_in2.place(width=140, height=24, x=995, y=265) #capital
-fr3_in2.bind("<KeyRelease>", comprar_capital) #capital
-
-fr3_in3 = Entry(fr3, bd=2, font=("Calibri", 15))
-fr3_in3.place(width=145, height=24, x=995, y=325) #Tempo
-fr3_in3.bind("<KeyRelease>", compra_tempo) #Tempo
+## tela do Investidor de Compra
+#fr3_lab = Label(fr3, image=fr3_img_1, width=1285).grid(row=0,column=0,sticky=W)
+#
+## imagem compra
+#fr3_lab1 = Label(fr3, image=fr3_img_6,bd=0).place(width=310, height=470, x=970, y=130)
+#
+## image tabela
+#fr3_lab2 = Label(fr3,bd=0, image=fr3_img_5).place(width=305, height=65, x=974, y=26)
+##tela do grafico
+#fr3_lab3 = Label(fr3, image=fr3_img_10, width=1000).place(width=950, height=470, x=5, y=125) # 
+#
+#
+#fr3_lab4 = Label(fr3,bd=0, image=fr3_img_11).place(width=178, height=52, x=30, y=148) # label moeda
+#
+#fr3_lab5 = Label(fr3,bd=0, image=fr3_img_12).place(width=218, height=52, x=222, y=148) # label cotação
+#
+#fr3_lab6 = Label(fr3,bd=0, image=fr3_img_13).place(width=480, height=52, x=462, y=148) # label media
+#
+#fr3_lab7 = Label(fr3, text='', font=("Calibri", 15))
+#fr3_lab7.place(width=145, height=24, x=995, y=400) #Montante
+#
+#fr3_lab8 = Label(fr3, text='',bd=0)
+#fr3_lab8.place(width=200, height=40, x=230, y=225) #label do USD
+#
+#fr3_lab9 = Label(fr3, text='',bd=0)
+#fr3_lab9.place(width=200, height=40, x=230, y=307) #label do EURO
+#
+#fr3_lab10 = Label(fr3, text='',bd=0)
+#fr3_lab10.place(width=200, height=40, x=230, y=380) #label do Libra
+#
+#fr3_lab11 = Label(fr3, text='',bd=0)
+#fr3_lab11.place(width=200, height=40, x=230, y=460) #label do Bitcoin
+#
+#fr3_lab12 = Label(fr3, text='',bd=0)
+#fr3_lab12.place(width=200, height=40, x=230, y=535) #label do Ethereum
+#
+#fr3_lab13 = Label(fr3, text='',bd=0)
+#fr3_lab13.place(width=465, height=40, x=470, y=225) #label do USD Média
+#
+#fr3_lab14 = Label(fr3, text='',bd=0)
+#fr3_lab14.place(width=465, height=40, x=470, y=307) #label do Euro Média
+#
+#fr3_lab15 = Label(fr3, text='',bd=0)
+#fr3_lab15.place(width=465, height=40, x=470, y=380) #label do Libra Média
+#
+#fr3_lab16 = Label(fr3, text='',bd=0)
+#fr3_lab16.place(width=465, height=40, x=470, y=460) #label do Bitcoin Média
+#
+#fr3_lab17 = Label(fr3, text='',bd=0)
+#fr3_lab17.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
+#
+#
+## Criação de botões 
+#
+## Botão de guardar
+#fr3_bt1 = Button(fr3, bd=0, image=fr3_img_2, command= lambda:[fr3.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+## Botão de comprar
+#fr3_bt2 = Button(fr3, bd=0, image=fr3_img_3, command= lambda:[fr3.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+## Botão de vender
+#fr3_bt3 = Button(fr3, bd=0, image=fr3_img_4, command= lambda:[fr3.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+## Botão de limpar
+#fr3_bt4 = Button(fr3, bd=0, image=fr3_img_8, command=lambda: [clear_1()])
+#fr3_bt4.place(width=115, height=43, x=996, y=461)
+#
+##  botão de Confirmar
+#fr3_bt5 = Button(fr3, bd=0, image=fr3_img_9, command=lambda: [escolha_guardar()])
+#fr3_bt5.place(width=115, height=42, x=1137, y=462)
+#
+## Botão de voltar
+#fr3_bt6 = Button(fr3, bd=0, image=fr3_img_14, command=lambda: [fr3.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")])
+#fr3_bt6.place(width=115, height=42, x=1069, y=524)
+#
+#fr3_in1 = Entry(fr3,bd=2,textvariable=var1, font=("Calibri", 15))
+#fr3_in1.place(width=140, height=24, x=995, y=200) 
+#fr3_in1.bind("<KeyRelease>")#,comprar_confirmar)   #moedaa
+#
+#fr3_in2 = Entry(fr3, bd=2, font=("Calibri", 15))
+#fr3_in2.place(width=140, height=24, x=995, y=265) #capital
+#fr3_in2.bind("<KeyRelease>", comprar_capital) #capital
+#
+#fr3_in4 = Entry(fr3, bd=2, font=("Calibri", 15))
+#fr3_in4.place(width=145, height=24, x=995, y=325) #Tempo
+#fr3_in4.bind("<KeyRelease>", compra_tempo) #Tempo
 
 
 # frame 4 # tela da Venda
@@ -936,7 +907,7 @@ fr4_lab1 = Label(fr4,bd=0, image=fr4_img_6).place(width=310, height=470, x=970, 
 fr4_lab2 = Label(fr4,bd=0, image=fr4_img_5).place(width=305, height=65, x=974, y=26)
 
 #tela do grafico
-fr4_lab3 = Label(fr4, image=fr4_img_10, width=1000).place(width=950, height=470, x=5, y=125) #
+fr4_lab3 = Label(fr4, image=fr4_img_10, width=1000).place(width=950, height=470, x=5, y=125) # 
 
 fr4_lab4 = Label(fr4,bd=0, image=fr4_img_11).place(width=178, height=52, x=30, y=148) # label moeda
 
@@ -944,8 +915,8 @@ fr4_lab5 = Label(fr4,bd=0, image=fr4_img_12).place(width=218, height=52, x=222, 
 
 fr4_lab6 = Label(fr4,bd=0, image=fr4_img_13).place(width=480, height=52, x=462, y=148) # label media
 
-fr4_lab7 = Label(fr4,text='ola', font=("Calibri", 15))
-fr4_lab7.place(width=145, height=24, x=993, y=454) #Montante
+fr4_lab7 = Label(fr4,text='', font=("Calibri", 15))
+fr4_lab7.place(width=145, height=24, x=993, y=370) #Montante
 
 fr4_lab8 = Label(fr4, text='',bd=0)
 fr4_lab8.place(width=200, height=40, x=230, y=225) #label do USD
@@ -981,35 +952,33 @@ fr4_lab17.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
 # Criação de botões 
 
 # Botão de guardar
-fr4_bt1 = Button(fr4, bd=0, image=fr4_img_2, command= lambda:[fr4.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+fr4_bt1 = Button(fr4, bd=0, image=fr4_img_2, command= lambda:[fr4.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=525, y=32)
 # Botão de comprar
-fr4_bt2 = Button(fr4, bd=0, image=fr4_img_3, command= lambda:[fr4.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+#fr4_bt2 = Button(fr4, bd=0, image=fr4_img_3, command= lambda:[fr4.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de vender
-fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr4.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+fr4_bt3 = Button(fr4, bd=0, image=fr4_img_4, command= lambda:[fr4.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=158, y=32)
 
 # Botão de limpar
 fr4_bt4 = Button(fr4, bd=0, image=fr4_img_8, command=lambda: [clear_2()] )
-fr4_bt4.place(width=115, height=43, x=1147, y=502)
+fr4_bt4.place(width=115, height=43, x=1002, y=432)
 #  botão de Confirmar
-fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9)
-fr4_bt5.place(width=115, height=42, x=1147, y=438)
+fr4_bt5 = Button(fr4, bd=0, image=fr4_img_9, command=lambda: [escolha_vender()])
+fr4_bt5.place(width=115, height=42, x=1141, y=432)
 
 # Botão de voltar
 fr4_bt6 = Button(fr4, bd=0, image=fr4_img_14, command=lambda: [fr4.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")])
-fr4_bt6.place(width=115, height=42, x=1002, y=503)
-
+fr4_bt6.place(width=115, height=42, x=1075, y=498)
 
 fr4_in1 = Entry(fr4, bd=2,textvariable=var2, font=("Calibri", 15))
 fr4_in1.place(width=140, height=24, x=993, y=222) #moeda a vender
-fr4_in1.bind("<KeyRelease>",moeda_vender)
 
 fr4_in2 = Entry(fr4, bd=2, font=("Calibri", 15))
 fr4_in2.place(width=140, height=24, x=993, y=287) #capital
 fr4_in2.bind("<KeyRelease>", venda_capital) 
 
-fr4_in3 = Entry(fr4,textvariable=var3, bd=2, font=("Calibri", 15))
-fr4_in3.bind("<KeyRelease>",moeda_comprar1)
-fr4_in3.place(width=145, height=24, x=993, y=390) #moeda a comprar
+#fr4_in3 = Entry(fr4,textvariable=var3, bd=2, font=("Calibri", 15))
+#fr4_in3.bind("<KeyRelease>")
+#fr4_in3.place(width=145, height=24, x=993, y=390) #moeda a comprar
 
 # frame 5 Tela de Guardar
 
@@ -1033,7 +1002,7 @@ fr5_lab5 = Label(fr5,bd=0, image=fr5_img_12).place(width=218, height=52, x=222, 
 
 fr5_lab6 = Label(fr5,bd=0, image=fr5_img_13).place(width=480, height=52, x=462, y=148) # label media
 
-fr5_lab7 = Label(fr5,text= 'ola', font=("Calibri", 15))
+fr5_lab7 = Label(fr5,text= '', font=("Calibri", 15))
 fr5_lab7.place(width=145, height=24, x=991, y=416) #Montante
 
 fr5_lab8 = Label(fr5, text='',bd=0)
@@ -1069,24 +1038,22 @@ fr5_lab17.place(width=465, height=40, x=470, y=535) #label do ETHEREUM Média
 # Criação de botões 
 
 # Botão de guardar
-fr5_bt1 = Button(fr5, bd=0, image=fr5_img_2, command= lambda:[fr5.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=675, y=32)
+fr5_bt1 = Button(fr5, bd=0, image=fr5_img_2, command= lambda:[fr5.grid_remove(),fr5.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=525, y=32)
 # Botão de compra
-fr5_bt2 = Button(fr5, bd=0, image=fr5_img_3,command= lambda:[fr5.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
+#fr5_bt2 = Button(fr5, bd=0, image=fr5_img_3,command= lambda:[fr5.grid_remove(),fr3.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=54, y=32)
 # Botão de venda
-fr5_bt3 = Button(fr5, bd=0, image=fr5_img_4,command= lambda:[fr5.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=367, y=32)
+fr5_bt3 = Button(fr5, bd=0, image=fr5_img_4,command= lambda:[fr5.grid_remove(),fr4.grid(),root.geometry("1289x600+310+153")]).place(width=223, height=60, x=158, y=32)
 # Botão de limpar
 fr5_bt4 = Button(fr5, bd=0, image=fr5_img_8, command=lambda: [clear_3()])
 fr5_bt4.place(width=115, height=42, x=996, y=459)
 #  botão de Confirmar
-fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9)
+fr5_bt5 = Button(fr5, bd=0, image=fr5_img_9, command=lambda: [escolha_guardar()])
 fr5_bt5.place(width=115, height=42, x=1130, y=460)
 # Botão de voltar
 fr5_bt6 = Button(fr5, bd=0, image=fr4_img_14, command=lambda: [fr5.grid_remove(),fr2.grid(),root.geometry("1289x600+310+153")])
 fr5_bt6.place(width=115, height=42, x=1062, y=525)
-
 fr5_in1 = Entry(fr5, bd=2,textvariable=var4, font=("Calibri", 15))
 fr5_in1.place(width=140, height=24, x=992, y=222) #moeda a Inserir
-fr5_in1.bind("<KeyRelease>",moeda_guardar)
 
 fr5_in2 = Entry(fr5, bd=2, font=("Calibri", 15))
 fr5_in2.place(width=140, height=24, x=992, y=287) #capital
