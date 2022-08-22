@@ -20,11 +20,19 @@ montante float not null,
 primary key (cod)
 );
 
+create table Movimentacoes_n(
+cod_n int auto_increment,
+nome_atk_n char(14) not null,
+nome_moeda_n char(14) not null,
+capital_n float not null,
+montante_n float not null,
+primary key (cod_n)
+);
+
 select * from Usuarios;
-select * from Movimentacoes_p;
+select * from Movimentacoes_n;
 
 drop table Usuarios;
-drop table Movimentacoes_p;
+drop table Movimentacoes_n;
 
 show tables;
-
