@@ -44,7 +44,7 @@ fr5 = Frame()
 def logando():
     mysqldb = mysql.connector.connect(host='localhost',user='root',password='q1w2e3',database='investimentos')
     mycursor = mysqldb.cursor()
-    global user, x
+    global user, xad
     user = fr0_in2.get()
     passw = fr0_in3.get()
     sql = 'select nome, senha from Usuarios where cpf_cnpj = %s and senha = %s'
@@ -130,6 +130,27 @@ def nome(event=None):
             y+=x[i]
     fr1_in2.delete(0, 'end')
     fr1_in2.insert(0, y)
+
+def vender(event=None):
+    x=fr4_in1.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] not in '0123456789':
+            y+=x[i]
+    fr4_in1.delete(0, 'end')
+    fr4_in1.insert(0, y)
+
+def inserir(event=None):
+    x=fr5_in1.get()
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if x[i] not in '0123456789':
+            y+=x[i]
+    fr5_in1.delete(0, 'end')
+    fr5_in1.insert(0, y)
+
 
 #Data de nascimento
 
@@ -971,6 +992,7 @@ fr4_bt6.place(width=115, height=42, x=1075, y=498)
 
 fr4_in1 = Entry(fr4, bd=2,textvariable=var2, font=("Calibri", 15))
 fr4_in1.place(width=140, height=24, x=993, y=222) #moeda a vender
+fr4_in1.bind("<KeyRelease>", vender) 
 
 fr4_in2 = Entry(fr4, bd=2, font=("Calibri", 15))
 fr4_in2.place(width=140, height=24, x=993, y=287) #capital
